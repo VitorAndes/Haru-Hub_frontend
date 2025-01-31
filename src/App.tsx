@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Games } from "./components/Games";
 import { GamesRecently } from "./components/GamesRecently";
 import { PlayerProfile } from "./components/PlayerProfile";
-import { Input } from "./components/common/input";
+import { Input } from "./components/common/Input";
 
 export function App() {
 	const inputRef = useRef<HTMLInputElement>(null);

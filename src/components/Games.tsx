@@ -1,5 +1,5 @@
 import { SteamLogo } from "../assets/SteamLogo";
-import { CardGame } from "./common/cardGame";
+import { CardGame } from "./common/CardGame";
 export function Games() {
 	return (
 		<>
