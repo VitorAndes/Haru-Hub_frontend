@@ -10,7 +10,7 @@ export function App() {
 
 	return (
 		<div className="flex gap-4 min-h-screen bg-background text-text">
-			<aside className="bg-slate-background/50 shadow shadow-secondary p-4">
+			<aside className="bg-neutral-950 shadow shadow-secondary p-4">
 				<PlayerProfile />
 			</aside>
 			<main className="max-w-7xl mt-4 p-8">
@@ -21,7 +21,7 @@ export function App() {
 						placeholder="Search game..."
 					/>
 				</header>
-				<section className="flex h-96 gap-2 mt-9">
+				<section className="h-96 mt-9">
 					<GamesRecently />
 				</section>
 				<section className="mt-20">

@@ -31,7 +31,7 @@ export function CardGame() {
 	return (
 		<>
 			{games.map((game) => (
-				<figure key={game.id} className="w-56 h-80">
+				<figure key={game.id} className="w-52 h-72">
 					<img
 						className="rounded-lg border border-text/50 shadow-sm shadow-secondary w-full h-full"
 						src={game.url}
