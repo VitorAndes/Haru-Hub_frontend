@@ -14,6 +14,7 @@ type GamesRecentlyType = Record<
 	steam_appid: number;
 	genres: GenreType[];
 	screenshots: screenshotsType[];
+	playtime_forever: number;
 };
 
 interface ApiResponse {
@@ -25,31 +26,27 @@ export function GamesRecently() {
 	const [carouselGames, setGamesRecently] = useState<GamesRecentlyType[]>([]);
 	const [error, setError] = useState<string | null>(null);
 
+	const url = "https://haru-hub-backend.onrender.com/";
+
 	useEffect(() => {
-		const fetchRecentlyPlayedGames = async () => {
+		async function fetchRecentlyPlayedGames() {
 			try {
-				const response = await fetch(
-					"http://localhost:3333/recentlyPlayedGames",
-					{
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json",
-						},
-					},
-				);
+				const response = await fetch(`${url}recentlyPlayedGames`);
 
 				if (!response.ok) {
 					throw new Error("Erro ao buscar os jogos");
 				}
 
 				const data: ApiResponse = await response.json();
-				const gamesRecently = Object.values(data).map((item) => item.data);
+				const gamesRecently = Object.values(data)
+					.map((item) => item.data)
+					.reverse();
 				setGamesRecently(gamesRecently);
 			} catch (error) {
 				console.error("Erro ao buscar os jogos:", error);
 				setError(error instanceof Error ? error.message : "Erro desconhecido");
 			}
-		};
+		}
 
 		fetchRecentlyPlayedGames();
 	}, []);
@@ -57,6 +54,11 @@ export function GamesRecently() {
 	if (error) {
 		return <div>Erro: {error}</div>;
 	}
+
+	setTimeout(() => {
+		if (current === carouselGames.length - 1) setCurrent(0);
+		else setCurrent(current + 1);
+	}, 3000);
 
 	const previousSlide = () => {
 		if (current === 0) setCurrent(carouselGames.length - 1);
@@ -68,31 +70,35 @@ export function GamesRecently() {
 	};
 
 	return (
-		<div className="flex flex-col items-center justify-center overflow-hidden">
+		<div className="flex flex-col items-center gap-4 max-w-7xl overflow-hidden">
+			<h1 className="text-3xl font-semibold self-start">
+				Jogados recentemente
+			</h1>
 			<div
-				className={`flex gap-2 transition-all ease-out duration-700 translate-x-[${current * 100}%]`}
+				className={"flex gap-2 ml-32 transition-all ease-out duration-700"}
 				style={{
 					transform: `translateX(-${current * 100}%)`,
 				}}
 			>
 				{carouselGames.map(
 					({
-						name,
-						header_image,
 						steam_appid,
+						header_image,
+						genres,
+						name,
 						screenshots,
 						short_description,
-						genres,
+						playtime_forever,
 					}) => {
 						return (
 							<div
 								key={steam_appid}
 								className="flex gap-2 flex-shrink-0 w-full"
 							>
-								<figure className="max-w-3xl h-96 relative">
+								<figure className="max-w-3xl relative">
 									<img
 										loading="lazy"
-										className="rounded-lg border-text/50 border shadow-sm shadow-secondary w-full h-full"
+										className="rounded-lg bg-primary border border-text w-full h-[400px]"
 										src={header_image}
 										alt="Foto destaque do jogo"
 									/>
@@ -111,17 +117,18 @@ export function GamesRecently() {
 									</div>
 								</figure>
 
-								<div className="flex flex-col gap-4 w-96">
-									<div className="flex-1 p-4 bg-gradient-to-b from-secondary to-background rounded-lg shadow-sm shadow-secondary border border-text/50 overflow-hidden">
-										<h1 className="text-xl font-bold">{name}</h1>
-										<p className="text-xs mt-2">{short_description}</p>
+								<div className="flex flex-col gap-4 h-full w-[450px]">
+									<div className="p-4 bg-primary border border-text  rounded-lg  overflow-hidden h-56">
+										<h1 className="text-xl font-semibold">{name}</h1>
+										<p className=" font-light mt-2">{short_description}</p>
+										<span>{playtime_forever}</span>
 									</div>
-									<figure className="flex flex-1 gap-2">
+									<figure className="flex w-[221px] h-[160px] overflow-hidden xl:overflow-visible gap-2">
 										{screenshots.slice(0, 2).map((screenshot) => {
 											return (
 												<img
 													key={screenshot.id}
-													className="w-full rounded-lg border-text/50 border shadow-sm shadow-secondary"
+													className="w-full rounded-lg bg-primary border border-text"
 													src={screenshot.path_thumbnail}
 													alt="Fotos dentro do jogo"
 												/>
@@ -134,6 +141,7 @@ export function GamesRecently() {
 					},
 				)}
 			</div>
+
 			<div className="flex items-center gap-4 mt-4">
 				<button onClick={previousSlide} type="button">
 					<ChevronLeft />
@@ -148,7 +156,7 @@ export function GamesRecently() {
 								}}
 								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 								key={`circle ${i}`}
-								className={`rounded-full cursor-pointer size-3 transition-all duration-700 ${i === current ? "bg-secondary w-16" : "bg-white"}`}
+								className={`rounded-full cursor-pointer size-3 transition-all duration-700 ${i === current ? "bg-secondary w-16 border border-white " : "bg-white"}`}
 							/>
 						);
 					})}
