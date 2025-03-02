@@ -1,4 +1,3 @@
-import { ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type userProfileType = Record<
@@ -62,9 +61,9 @@ export function PlayerProfile() {
 	}
 
 	return (
-		<div className="flex gap-4 w-full">
-			<div className="flex gap-4 w-full">
-				<figure className="w-64 h-64">
+		<div className="flex flex-col items-center p-5 gap-4 w-32 h-full rounded-2xl bg-aside/80 shadow-md shadow-secondary border border-slate-500 backdrop-blur">
+			<div className="flex flex-col gap-4 w-full">
+				<figure className="w-20 h-20 rounded-full">
 					<img
 						src={playerProfile?.avatarfull}
 						alt="Avatar do jogador"
@@ -73,17 +72,16 @@ export function PlayerProfile() {
 				</figure>
 				<div className="flex flex-col gap-2 justify-between">
 					<div>
-						<div className="flex gap-2 items-center justify-between">
+						<div className="flex flex-col gap-2 items-center justify-between">
 							<a
 								className="inline-flex items-center gap-2 hover:text-secondary transition-all"
 								href={playerProfile?.profileurl}
 								target="_black"
 							>
-								<h1 className="text-3xl font-semibold">
+								<h1 className="text-2xl font-semibold">
 									{playerProfile?.personaname}
 								</h1>
-								{playerProfile?.loccountrycode === "BR" && "🇧🇷"}
-								<ExternalLink />
+								{playerProfile?.loccountrycode === "BR" && "#🇧🇷"}
 							</a>
 							<span>
 								<span className="text-lg font-semibold">

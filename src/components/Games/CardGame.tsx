@@ -88,7 +88,7 @@ export function CardGame() {
 	if (games.length === 0) {
 		return (
 			<div className="flex justify-center items-center h-60">
-				<div className="p-4 bg-blue-100 border-l-4 border-blue-500 text-blue-700">
+				<div className="p-4 bg-primary/80 border border-slate-400 backdrop-blur">
 					<p>Nenhum jogo encontrado.</p>
 				</div>
 			</div>
@@ -96,22 +96,22 @@ export function CardGame() {
 	}
 
 	return (
-		<div className="flex justify-center gap-5 flex-wrap">
+		<div className="flex gap-5 flex-wrap">
 			{games.map((game) => (
 				// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 				<figure
 					key={game.steam_appid}
-					className="w-[410px] h-52 relative"
+					className="w-[400px] h-60 relative"
 					onClick={() => openModal(game)}
 				>
 					{game.header_image ? (
 						<img
-							className="rounded-2xl border bg-primary border-text w-full h-full hover:scale-105 hover:border-secondary hover:-translate-y-5 duration-300 cursor-pointer transition-all"
+							className="rounded-2xl border bg-primary/80 border-slate-400 w-full h-full hover:scale-105 hover:border-secondary hover:-translate-y-2 active:scale-95 active:translate-y-2 duration-300 cursor-pointer transition-all"
 							src={game.header_image}
 							alt={game.name || "Jogo sem nome"}
 							loading="lazy"
 							onError={(e) => {
-								e.currentTarget.src = "/placeholder-game.jpg";
+								e.currentTarget.src = "../../assets/placeholder-game.webp";
 								e.currentTarget.alt = "Imagem não disponível";
 							}}
 						/>

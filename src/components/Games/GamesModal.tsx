@@ -12,7 +12,7 @@ export function GamesModal({
 	onClose,
 }: GamesProps) {
 	return (
-		<div className="transition-all flex gap-5 bg-primary border border-text rounded-xl p-6 max-w-7xl w-full h-[740px] overflow-y-auto relative shadow-lg shadow-secondary ">
+		<div className="transition-all flex gap-5 bg-primary border border-slate-400 rounded-2xl p-6 max-w-7xl w-full h-[740px] overflow-y-auto relative shadow shadow-secondary ">
 			<div className="flex flex-col gap-5 w-[644px]">
 				<figure>
 					<img
