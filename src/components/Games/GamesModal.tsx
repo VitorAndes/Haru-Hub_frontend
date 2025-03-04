@@ -1,4 +1,4 @@
-import { XCircle } from "lucide-react";
+import { Clock, Monitor, XCircle } from "lucide-react";
 import type { Games } from "./CardGame";
 
 type GamesProps = Games & {
@@ -23,23 +23,31 @@ export function GamesModal({
 				</figure>
 				<div className="flex flex-col gap-5">
 					<div className="flex items-center justify-between">
-						<h1 className="text-3xl font-semibold">{name}</h1>
+						<h1 className="font-title text-3xl font-semibold">{name}</h1>
 						<div className="flex gap-4 ">
 							<div>
-								<h2 className="text-lg font-semibold">tempo de jogo</h2>
-								<p className="font-light">4,7 horas</p>
+								<h2 className="font-title inline-flex gap-2 items-center text-lg font-semibold">
+									<Clock />
+									tempo de jogo
+								</h2>
+								<p className="font-paragraph font-light">4,7 horas</p>
 							</div>
 							<div>
-								<h2 className="text-lg font-semibold">Ultima sessão</h2>
-								<p className="font-light">12 de fev</p>
+								<h2 className="inline-flex gap-2 items-center font-title text-lg font-semibold">
+									<Monitor />
+									Ultima sessão
+								</h2>
+								<p className="font-paragraph font-light">12 de fev</p>
 							</div>
 						</div>
 					</div>
-					<p className="text-xl font-light">{short_description}</p>
+					<p className="font-paragraph text-xl font-light">
+						{short_description}
+					</p>
 				</div>
 			</div>
 			<div>
-				<h1 className="text-3xl font-semibold">Conquistas</h1>
+				<h1 className="font-title text-3xl font-semibold">Conquistas</h1>
 			</div>
 			<button
 				className="absolute top-3 right-1 text-red-500"

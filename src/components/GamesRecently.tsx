@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeftCircle, ChevronRightCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type GenreType = Record<"id" | "description", string>;
@@ -55,10 +55,10 @@ export function GamesRecently() {
 		return <div>Erro: {error}</div>;
 	}
 
-	setTimeout(() => {
-		if (current === carouselGames.length - 1) setCurrent(0);
-		else setCurrent(current + 1);
-	}, 3000);
+	// setTimeout(() => {
+	// 	if (current === carouselGames.length - 1) setCurrent(0);
+	// 	else setCurrent(current + 1);
+	// }, 3000);
 
 	const previousSlide = () => {
 		if (current === 0) setCurrent(carouselGames.length - 1);
@@ -70,8 +70,8 @@ export function GamesRecently() {
 	};
 
 	return (
-		<div className="flex flex-col items-center gap-4 max-w-7xl overflow-hidden">
-			<h1 className="text-3xl font-semibold self-start">
+		<div className="flex flex-col items-center gap-4 w-[1280px] overflow-hidden">
+			<h1 className="font-title text-3xl font-semibold self-start mb-5">
 				Jogados recentemente
 			</h1>
 			<div
@@ -98,7 +98,7 @@ export function GamesRecently() {
 								<figure className="max-w-3xl relative">
 									<img
 										loading="lazy"
-										className="rounded-2xl shadow shadow-secondary bg-primary/80 border border-slate-400 w-full h-[450px]"
+										className="rounded-2xl shadow shadow-secondary bg-primary/80 border border-slate-400 w-full h-[470px]"
 										src={header_image}
 										alt="Foto destaque do jogo"
 									/>
@@ -118,12 +118,14 @@ export function GamesRecently() {
 								</figure>
 
 								<div className="flex flex-col gap-4 h-full w-[460px]">
-									<div className="p-4 bg-primary/80 backdrop-blur shadow shadow-secondary border border-slate-400 rounded-2xl overflow-hidden h-56">
-										<h1 className="text-xl font-semibold">{name}</h1>
-										<p className=" font-light mt-2">{short_description}</p>
+									<div className="p-4 bg-primary/50 backdrop-blur shadow shadow-secondary border border-slate-400 rounded-2xl overflow-hidden h-56">
+										<h1 className="font-title text-xl font-semibold">{name}</h1>
+										<p className="font-paragraph font-light mt-2">
+											{short_description}
+										</p>
 										<span>{playtime_forever}</span>
 									</div>
-									<figure className="flex w-[227px] h-[207px] overflow-hidden xl:overflow-visible gap-2">
+									<figure className="flex w-[227px] h-[230px] overflow-hidden xl:overflow-visible gap-2">
 										{screenshots.slice(0, 2).map((screenshot) => {
 											return (
 												<img
@@ -143,8 +145,12 @@ export function GamesRecently() {
 			</div>
 
 			<div className="flex items-center gap-4 mt-4">
-				<button onClick={previousSlide} type="button">
-					<ChevronLeft />
+				<button
+					className="hover:bg-secondary rounded-full transition-all hover:scale-105 hover:-translate-x-2 duration-300"
+					onClick={previousSlide}
+					type="button"
+				>
+					<ChevronLeftCircle size={32} />
 				</button>
 				<div className="flex items-center gap-2">
 					{carouselGames.map((_, i) => {
@@ -156,13 +162,17 @@ export function GamesRecently() {
 								}}
 								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 								key={`circle ${i}`}
-								className={`rounded-full cursor-pointer size-3 transition-all duration-700 ${i === current ? "bg-secondary w-16 border border-white " : "bg-white"}`}
+								className={`rounded-full cursor-pointer size-4 transition-all duration-700 hover:opacity-40 ${i === current ? "bg-accent w-20 border border-white" : "bg-white"}`}
 							/>
 						);
 					})}
 				</div>
-				<button onClick={nextSlide} type="button">
-					<ChevronRight />
+				<button
+					className="hover:bg-secondary rounded-full transition-all hover:scale-105 hover:translate-x-2 duration-300"
+					onClick={nextSlide}
+					type="button"
+				>
+					<ChevronRightCircle size={32} />
 				</button>
 			</div>
 		</div>

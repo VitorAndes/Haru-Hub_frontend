@@ -13,6 +13,13 @@ export default {
 				backgroundSecondary: "#222222",
 				aside: "#16161A",
 			},
+			backgroundImage: {
+				body: "url('https://www.transparenttextures.com/patterns/batthern.png')",
+			},
+		},
+		fontFamily: {
+			title: "Playfair Display",
+			paragraph: "Fira Code",
 		},
 	},
 	plugins: [],
