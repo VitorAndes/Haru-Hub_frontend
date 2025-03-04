@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { type FormEvent, useRef } from "react";
+import { useRef } from "react";
 import { CardGame } from "./components/Games/CardGame";
 import { GamesRecently } from "./components/GamesRecently";
 import { PlayerProfile } from "./components/PlayerProfile";
@@ -8,10 +8,10 @@ import { Input } from "./components/common/Input";
 export function App() {
 	const inputRef = useRef<HTMLInputElement>(null);
 
-	const handleRegisterSubmit = (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		console.log(inputRef.current?.value);
-	};
+	// const handleRegisterSubmit = (event: FormEvent<HTMLFormElement>) => {
+	// 	event.preventDefault();
+	// 	console.log(inputRef.current?.value);
+	// };
 
 	return (
 		<div className="flex p-4 w-[1550px] h-[1100px] gap-4 relative">
