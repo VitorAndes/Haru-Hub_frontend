@@ -27,8 +27,8 @@ export function App() {
 				<section className="h-96 mt-10">
 					<GamesRecently />
 				</section>
-				<section className="flex flex-col gap-9 mt-64">
-					<div className="flex items-baseline gap-5">
+				<section className="flex flex-col gap-7 mt-64">
+					<div className="flex items-baseline justify-between gap-5">
 						<h1 className="font-title text-3xl font-semibold mb-5">
 							Todos os jogos
 						</h1>
@@ -36,7 +36,7 @@ export function App() {
 							id="games-name"
 							type="text"
 							ref={inputRef}
-							icon={() => <Search />}
+							icon={() => <Search size={32} />}
 							placeholder="Search game..."
 						/>
 					</div>

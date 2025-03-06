@@ -15,9 +15,13 @@ export const Input = ({
 	...rest
 }: InputProps) => {
 	return (
-		<div className="flex gap-2 items-center w-96 bg-aside/50 h-10 px-5 py-6 rounded-2xl outline-none backdrop-blur-sm shadow-md shadow-secondary border border-slate-500">
+		<div className="flex gap-2 items-center w-96 bg-secondary/10 h-14 px-5 py-5 rounded-2xl outline-none backdrop-blur-sm shadow-md shadow-secondary">
 			{icon?.()}
-			<input ref={ref} className="w-96 bg-transparent outline-none" {...rest} />
+			<input
+				ref={ref}
+				className="font-paragraph w-96 bg-transparent outline-none"
+				{...rest}
+			/>
 			{errorMessage && <p>{errorMessage}</p>}
 		</div>
 	);

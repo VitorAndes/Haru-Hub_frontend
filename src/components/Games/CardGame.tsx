@@ -106,7 +106,7 @@ export function CardGame() {
 				>
 					{game.header_image ? (
 						<img
-							className="rounded-2xl border bg-primary/80 border-slate-400 w-full h-full hover:scale-105 hover:border-secondary hover:-translate-y-2 active:scale-95 active:translate-y-2 duration-300 cursor-pointer transition-all"
+							className="rounded-2xl bg-primary/80 w-full h-full hover:scale-105 hover:border-secondary hover:-translate-y-2 active:scale-95 active:translate-y-2 duration-300 cursor-pointer transition-all shadow-md shadow-secondary"
 							src={game.header_image}
 							alt={game.name || "Jogo sem nome"}
 							loading="lazy"
