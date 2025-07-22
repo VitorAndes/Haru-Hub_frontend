@@ -18,8 +18,8 @@ export default {
 			},
 		},
 		fontFamily: {
-			title: "Playfair Display",
-			paragraph: "Fira Code",
+			title: "Bree Serif",
+			paragraph: "Inter",
 		},
 	},
 	plugins: [],

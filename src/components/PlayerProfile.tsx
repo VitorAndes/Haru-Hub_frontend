@@ -2,117 +2,121 @@ import { ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type userProfileType = Record<
-	| "steamid"
-	| "personaname"
-	| "profileurl"
-	| "avatarfull"
-	| "loccountrycode"
-	| "realname",
-	string
+  | "steamid"
+  | "personaname"
+  | "profileurl"
+  | "avatarfull"
+  | "loccountrycode"
+  | "realname",
+  string
 > & {
-	personastate: number;
-	lastlogoff: number;
-	timecreated: number;
+  personastate: number;
+  lastlogoff: number;
+  timecreated: number;
 };
 
 interface ApiResponse {
-	response: {
-		players: userProfileType[];
-	};
+  response: {
+    players: userProfileType[];
+  };
 }
 
 export function PlayerProfile() {
-	const [playerProfile, setPlayerProfile] = useState<userProfileType | null>(
-		null,
-	);
-	const [error, setError] = useState<string | null>(null);
+  const [playerProfile, setPlayerProfile] = useState<userProfileType | null>(
+    null
+  );
+  const [error, setError] = useState<string | null>(null);
 
-	const url = "https://haru-hub-backend.onrender.com/";
+  const url = "https://haru-hub-backend.onrender.com/";
 
-	useEffect(() => {
-		async function fetchUserProfile() {
-			try {
-				const response = await fetch(`${url}user`);
+  useEffect(() => {
+    async function fetchUserProfile() {
+      try {
+        const response = await fetch(`${url}user`);
 
-				if (!response.ok) {
-					throw new Error("Erro ao buscar os jogos");
-				}
+        if (!response.ok) {
+          throw new Error("Erro ao buscar os jogos");
+        }
 
-				const data: ApiResponse = await response.json();
-				const userProfile = data.response.players;
-				setPlayerProfile(userProfile[0]);
-			} catch (error) {
-				console.error("Erro ao buscar os jogos:", error);
-				setError(error instanceof Error ? error.message : "Erro desconhecido");
-			}
-		}
+        const data: ApiResponse = await response.json();
+        const userProfile = data.response.players;
+        setPlayerProfile(userProfile[0]);
+      } catch (error) {
+        console.error("Erro ao buscar os jogos:", error);
+        setError(error instanceof Error ? error.message : "Erro desconhecido");
+      }
+    }
 
-		fetchUserProfile();
-	}, []);
+    fetchUserProfile();
+  }, []);
 
-	const playerAccountCreatedAt: Date | null = playerProfile?.timecreated
-		? new Date(playerProfile.timecreated * 1000)
-		: null;
-	const lastlogoff: Date | null = playerProfile?.lastlogoff
-		? new Date(playerProfile.lastlogoff * 1000)
-		: null;
+  const playerAccountCreatedAt: Date | null = playerProfile?.timecreated
+    ? new Date(playerProfile.timecreated * 1000)
+    : null;
+  const lastlogoff: Date | null = playerProfile?.lastlogoff
+    ? new Date(playerProfile.lastlogoff * 1000)
+    : null;
 
-	if (error) {
-		return <div>Erro: {error}</div>;
-	}
+  if (error) {
+    return <div>Erro: {error}</div>;
+  }
 
-	return (
-		<div
-			className={`flex flex-col items-center justify-between p-3 gap-4 w-44 h-full rounded-2xl shadow-md backdrop-blur-sm bg-secondary/10 transition-colors ${playerProfile?.personastate === 1 ? "shadow-emerald-900" : " shadow-rose-900"}`}
-		>
-			<div className="flex-1">
-				<figure className="w-36 h-36 rounded-full">
-					<img
-						src={playerProfile?.avatarfull}
-						alt="Avatar do jogador"
-						className="w-full h-full rounded-2xl shadow shadow-secondary"
-					/>
-				</figure>
-				<div className="flex flex-col gap-3 mt-4">
-					<a
-						className="inline-flex items-center gap-2 hover:text-secondary transition-all"
-						href={playerProfile?.profileurl}
-						target="_black"
-					>
-						<h1 className="font-title text-2xl font-semibold">
-							{playerProfile?.personaname}
-						</h1>
-						{playerProfile?.loccountrycode === "BR" && "#🇧🇷"}
-						<ExternalLink />
-					</a>
-					<p className="font-paragraph font-light mt-2">No mundo da lua</p>
-					<span className="font-paragraph text-sm font-semibold">
-						{playerProfile?.personastate === 1 ? "Online 🟢" : "Offline 🔴"}
-					</span>
-				</div>
-			</div>
-			<div className="flex flex-col gap-8 flex-shrink-0">
-				<div className="flex flex-col gap-3 h-full">
-					<p className="flex flex-col text-lg ">
-						<span className="font-title font-semibold">Conta criada em</span>
-						<span className="font-paragraph font-bold text-accent">
-							{playerAccountCreatedAt?.toLocaleString("en", {
-								month: "short",
-								day: "numeric",
-								year: "numeric",
-							})}
-						</span>
-					</p>
-					<p className="flex flex-col text-lg">
-						<span className="font-title font-semibold">Última vez on</span>
-						<span className="font-paragraph font-bold text-accent">
-							{lastlogoff?.toLocaleString("pt-BR", {
-								weekday: "long",
-							})}
-						</span>
-					</p>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div
+      className={`flex flex-col items-center justify-between p-3 gap-4 w-48 h-full rounded-2xl shadow-md backdrop-blur-sm bg-primary/25 transition-colors ${
+        playerProfile?.personastate === 1
+          ? "shadow-emerald-900"
+          : " shadow-rose-900"
+      }`}
+    >
+      <div className="flex-1">
+        <figure className="w-36 h-36 rounded-full">
+          <img
+            src={playerProfile?.avatarfull}
+            alt="Avatar do jogador"
+            className="w-full h-full rounded-2xl shadow shadow-secondary"
+          />
+        </figure>
+        <div className="flex flex-col gap-3 mt-4">
+          <a
+            className="inline-flex items-center gap-2 hover:text-secondary transition-all"
+            href={playerProfile?.profileurl}
+            target="_black"
+          >
+            <h1 className="font-title text-2xl font-semibold">
+              {playerProfile?.personaname}
+            </h1>
+            {playerProfile?.loccountrycode === "BR" && "#🇧🇷"}
+            <ExternalLink />
+          </a>
+          <p className="font-paragraph font-light mt-2">No mundo da lua</p>
+          <span className="font-paragraph text-sm font-semibold">
+            {playerProfile?.personastate === 1 ? "Online 🟢" : "Offline 🔴"}
+          </span>
+        </div>
+      </div>
+      <div className="flex flex-col gap-8 flex-shrink-0">
+        <div className="flex flex-col gap-3 h-full">
+          <p className="flex flex-col text-lg ">
+            <span className="font-title font-semibold">Conta criada em</span>
+            <span className="font-paragraph font-bold text-accent">
+              {playerAccountCreatedAt?.toLocaleString("en", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
+          </p>
+          <p className="flex flex-col text-lg">
+            <span className="font-title font-semibold">Última vez on</span>
+            <span className="font-paragraph font-bold text-accent">
+              {lastlogoff?.toLocaleString("pt-BR", {
+                weekday: "long",
+              })}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
