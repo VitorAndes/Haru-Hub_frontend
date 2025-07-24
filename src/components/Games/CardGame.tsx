@@ -112,7 +112,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
   }
 
   return (
-    <div className="flex gap-5 flex-wrap">
+    <div className="flex gap-3 flex-wrap">
       {filteredGames.map((game) => (
         <figure
           key={game.steam_appid}
@@ -121,7 +121,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
         >
           {game.header_image ? (
             <img
-              className="rounded-2xl bg-primary/80 w-full h-full hover:scale-105 hover:border-secondary hover:-translate-y-2 active:scale-95 active:translate-y-2 duration-300 cursor-pointer transition-all shadow-md shadow-secondary"
+              className="rounded-2xl bg-primary/80 w-full h-full hover:scale-105 hover:border-secondary hover:-translate-y-2 active:scale-95 active:translate-y-2 duration-300 cursor-pointer transition-all"
               src={game.header_image}
               alt={game.name || "Jogo sem nome"}
               loading="lazy"
@@ -145,7 +145,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 flex items-center justify-center z-50 bg-primary/80"
+            className="fixed inset-0 flex items-center justify-center z-10 bg-primary/80"
             key="modal"
           >
             <GamesModal

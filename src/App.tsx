@@ -1,9 +1,9 @@
 import { Search } from "lucide-react";
 import { ChangeEvent, useState } from "react";
+import { Input } from "./components/common/Input";
 import { CardGame } from "./components/Games/CardGame";
 import { GamesRecently } from "./components/GamesRecently";
 import { PlayerProfile } from "./components/PlayerProfile";
-import { Input } from "./components/common/Input";
 
 export function App() {
   const [inputValue, setInputValue] = useState("");
@@ -13,14 +13,14 @@ export function App() {
   };
 
   return (
-    <div className="flex p-4 w-[1550px] h-[1100px] gap-4 relative">
-      <aside className="">
+    <div className="flex p-4 w-[1560px] h-[1100px] gap-4 relative">
+      <aside>
         <PlayerProfile />
       </aside>
       <main className="px-8 overflow-hidden overflow-y-scroll bg-scroll">
         <header className="flex items-center gap-2 justify-between">
-          <h1 className="font-title text-5xl font-bold">
-            Welcome to Haru Hub!
+          <h1 className="font-title text-3xl font-bold">
+            Bem vindo ao Haru Hub!
           </h1>
         </header>
         <section className="h-96 mt-10">
@@ -28,7 +28,7 @@ export function App() {
         </section>
         <section className="flex flex-col gap-7 mt-64">
           <div className="flex items-baseline justify-between gap-5">
-            <h1 className="font-title text-3xl font-semibold mb-5">
+            <h1 className="font-title text-xl font-semibold mb-5">
               Todos os jogos
             </h1>
 

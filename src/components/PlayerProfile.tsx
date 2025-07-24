@@ -63,18 +63,18 @@ export function PlayerProfile() {
 
   return (
     <div
-      className={`flex flex-col items-center justify-between p-3 gap-4 w-48 h-full rounded-2xl shadow-md backdrop-blur-sm bg-primary/25 transition-colors ${
+      className={`flex flex-col items-center justify-between p-3 gap-4 w-56 h-full rounded-2xl shadow-lg backdrop-blur-sm bg-primary/25 transition-colors overflow-hidden ${
         playerProfile?.personastate === 1
           ? "shadow-emerald-900"
           : " shadow-rose-900"
       }`}
     >
       <div className="flex-1">
-        <figure className="w-36 h-36 rounded-full">
+        <figure className="">
           <img
             src={playerProfile?.avatarfull}
             alt="Avatar do jogador"
-            className="w-full h-full rounded-2xl shadow shadow-secondary"
+            className="w-full h-full rounded-full"
           />
         </figure>
         <div className="flex flex-col gap-3 mt-4">
@@ -88,18 +88,18 @@ export function PlayerProfile() {
             </h1>
             {playerProfile?.loccountrycode === "BR" && "#🇧🇷"}
             <ExternalLink />
+            <span className="font-paragraph text-sm font-semibold">
+              {playerProfile?.personastate === 1 ? "🟢" : "🔴"}
+            </span>
           </a>
-          <p className="font-paragraph font-light mt-2">No mundo da lua</p>
-          <span className="font-paragraph text-sm font-semibold">
-            {playerProfile?.personastate === 1 ? "Online 🟢" : "Offline 🔴"}
-          </span>
+          <p className="font-paragraph">No mundo da lua</p>
         </div>
       </div>
       <div className="flex flex-col gap-8 flex-shrink-0">
         <div className="flex flex-col gap-3 h-full">
-          <p className="flex flex-col text-lg ">
-            <span className="font-title font-semibold">Conta criada em</span>
-            <span className="font-paragraph font-bold text-accent">
+          <p className="flex flex-col ">
+            <span className="font-title text-lg">Conta criada em:</span>
+            <span className="font-paragraph text-slate-300">
               {playerAccountCreatedAt?.toLocaleString("en", {
                 month: "short",
                 day: "numeric",
@@ -107,9 +107,9 @@ export function PlayerProfile() {
               })}
             </span>
           </p>
-          <p className="flex flex-col text-lg">
-            <span className="font-title font-semibold">Última vez on</span>
-            <span className="font-paragraph font-bold text-accent">
+          <p className="flex flex-col">
+            <span className="font-title text-lg">Última vez online:</span>
+            <span className="font-paragraph text-slate-300">
               {lastlogoff?.toLocaleString("pt-BR", {
                 weekday: "long",
               })}

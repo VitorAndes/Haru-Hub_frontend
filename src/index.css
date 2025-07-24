@@ -22,5 +22,6 @@
 }
 
 :root {
+	scrollbar-color: #701dee #46158f44; 
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }

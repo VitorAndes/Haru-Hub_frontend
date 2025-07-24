@@ -85,7 +85,7 @@ export function GamesRecently() {
 
   return (
     <div className="flex flex-col items-center gap-4 w-[1280px] overflow-hidden">
-      <h1 className="font-title text-3xl font-semibold self-start mb-5">
+      <h1 className="font-title text-xl font-semibold self-start mb-5">
         Jogados recentemente
       </h1>
       <div
@@ -105,7 +105,7 @@ export function GamesRecently() {
             playtime_forever,
           }) => {
             return (
-              <div key={steam_appid} className="flex gap-2 flex-shrink-0 pl-5">
+              <div key={steam_appid} className="flex gap-2 flex-shrink-0">
                 <figure className="max-w-3xl relative">
                   <img
                     loading="lazy"
@@ -139,7 +139,7 @@ export function GamesRecently() {
                     <span>{playtime_forever}</span>
                   </div>
                   <figure className="flex w-full h-[230px] overflow-hidden xl:overflow-visible gap-2">
-                    {screenshots.slice(0, 1).map((screenshot) => {
+                    {screenshots.slice(1, 2).map((screenshot) => {
                       return (
                         <img
                           key={screenshot.id}
