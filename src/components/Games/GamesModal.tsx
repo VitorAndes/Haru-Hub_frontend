@@ -12,7 +12,7 @@ export function GamesModal({
   onClose,
 }: GamesProps) {
   return (
-    <div className="transition-all flex gap-5 bg-primary rounded-md max-w-3xl w-full h-[940px] overflow-hidden relative shadow shadow-secondary">
+    <div className="transition-all flex gap-5 bg-primary rounded-2xl max-w-3xl w-full h-fit overflow-hidden relative shadow shadow-secondary">
       <div className="flex flex-col gap-5 w-full">
         <figure className="border-b-2 border-accent">
           <img className="w-full" src={header_image} alt="game background" />
@@ -40,9 +40,6 @@ export function GamesModal({
           <p className="font-paragraph text-lg font-light">
             {short_description}
           </p>
-          <div>
-            <h1 className="font-title text-3xl font-semibold">Conquistas</h1>
-          </div>
         </div>
       </div>
       <button

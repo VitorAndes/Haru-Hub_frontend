@@ -41,7 +41,6 @@ export function GamesRecently() {
   };
 
   useEffect(() => {
-    const controller = new AbortController();
     async function fetchRecentlyPlayedGames() {
       try {
         setIsLoading(true);
@@ -65,7 +64,6 @@ export function GamesRecently() {
     }
 
     fetchRecentlyPlayedGames();
-    return () => controller.abort();
   }, []);
 
   if (error) {
@@ -89,7 +87,7 @@ export function GamesRecently() {
         Jogados recentemente
       </h1>
       <div
-        className={"flex gap-2 transition-all ease-out duration-700 w-[1270px]"}
+        className={"flex gap-2 transition-all ease-out duration-700 w-[1280px]"}
         style={{
           transform: `translateX(-${current * 100}%)`,
         }}

@@ -13,6 +13,9 @@ export default {
 				backgroundSecondary: "#222222",
 				aside: "#16161A",
 			},
+			boxShadow:{
+				main: "inset 0px -80px 30px -10px rgba(112, 29, 238, 0.1)",
+			},
 			backgroundImage: {
 				body: "url('https://www.transparenttextures.com/patterns/batthern.png')",
 			},

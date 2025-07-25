@@ -29,14 +29,10 @@ export function CardGame({ filterSearch }: CardGameProps) {
   const url = "https://haru-hub-backend.onrender.com/";
 
   useEffect(() => {
-    const controller = new AbortController();
-
     async function fetchGames() {
       try {
         setIsLoading(true);
-        const response = await fetch(`${url}games`, {
-          signal: controller.signal,
-        });
+        const response = await fetch(`${url}games`);
 
         if (!response.ok) {
           throw new Error(
@@ -65,8 +61,6 @@ export function CardGame({ filterSearch }: CardGameProps) {
     }
 
     fetchGames();
-
-    return () => controller.abort();
   }, []);
 
   useEffect(() => {
@@ -112,7 +106,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
   }
 
   return (
-    <div className="flex gap-3 flex-wrap">
+    <div className="flex gap-5 flex-wrap">
       {filteredGames.map((game) => (
         <figure
           key={game.steam_appid}

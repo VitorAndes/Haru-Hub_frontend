@@ -13,11 +13,11 @@ export function App() {
   };
 
   return (
-    <div className="flex p-4 w-[1560px] h-[1100px] gap-4 relative">
+    <div className="flex p-4 w-[1580px] h-[1000px] gap-4 relative  ">
       <aside>
         <PlayerProfile />
       </aside>
-      <main className="px-8 overflow-hidden overflow-y-scroll bg-scroll">
+      <main className="px-8 overflow-hidden overflow-y-scroll bg-scroll rounded-lg flex flex-col ">
         <header className="flex items-center gap-2 justify-between">
           <h1 className="font-title text-3xl font-bold">
             Bem vindo ao Haru Hub!
@@ -41,9 +41,7 @@ export function App() {
             />
           </div>
 
-          <div>
-            <CardGame filterSearch={inputValue} />
-          </div>
+          <CardGame filterSearch={inputValue} />
         </section>
       </main>
     </div>

@@ -63,10 +63,10 @@ export function PlayerProfile() {
 
   return (
     <div
-      className={`flex flex-col items-center justify-between p-3 gap-4 w-56 h-full rounded-2xl shadow-lg backdrop-blur-sm bg-primary/25 transition-colors overflow-hidden ${
+      className={`flex flex-col items-center justify-between p-3 gap-4 w-56 h-full rounded-2xl shadow-md border backdrop-blur-sm bg-primary/25 transition-colors overflow-hidden ${
         playerProfile?.personastate === 1
-          ? "shadow-emerald-900"
-          : " shadow-rose-900"
+          ? "shadow-emerald-900 border-emerald-900"
+          : " shadow-rose-900 border-rose-900"
       }`}
     >
       <div className="flex-1">
