@@ -87,7 +87,9 @@ export function GamesRecently() {
         Jogados recentemente
       </h1>
       <div
-        className={"flex gap-2 transition-all ease-out duration-700 w-[1280px]"}
+        className={
+          "flex gap-2 transition-all ease-out duration-700 w-[1280px] "
+        }
         style={{
           transform: `translateX(-${current * 100}%)`,
         }}
@@ -103,7 +105,7 @@ export function GamesRecently() {
             playtime_forever,
           }) => {
             return (
-              <div key={steam_appid} className="flex gap-2 flex-shrink-0">
+              <div key={steam_appid} className="flex gap-2 flex-shrink-0 ml-6">
                 <figure className="max-w-3xl relative">
                   <img
                     loading="lazy"
