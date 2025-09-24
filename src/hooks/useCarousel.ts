@@ -16,7 +16,6 @@ export function useCarousel(totalSlides: number) {
     setCurrent(index);
   }, []);
 
-  // Auto-play effect
   useEffect(() => {
     if (totalSlides === 0) return;
 
