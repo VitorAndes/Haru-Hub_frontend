@@ -1,9 +1,9 @@
 import { Search } from "lucide-react";
 import { ChangeEvent, useState } from "react";
 import { Input } from "./components/common/Input";
-import { CardGame } from "./components/Games/CardGame";
-import { GamesRecently } from "./components/GamesRecently";
-import { PlayerProfile } from "./components/PlayerProfile";
+import { CardGame } from "./components/Games/cardGame";
+import { GamesRecently } from "./components/GamesRecently/gamesRecently";
+import { PlayerProfile } from "./components/playerProfile";
 
 export function App() {
   const [inputValue, setInputValue] = useState("");
