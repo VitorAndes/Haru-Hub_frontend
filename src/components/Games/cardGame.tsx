@@ -21,18 +21,15 @@ export function CardGame({ filterSearch }: CardGameProps) {
   const openModal = useCallback((game: Games) => {
     setSelectedGame(game);
     setIsModalOpen(true);
-    // Prevent body scroll when modal is open
     document.body.style.overflow = "hidden";
   }, []);
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedGame(null);
-    // Restore body scroll
     document.body.style.overflow = "unset";
   }, []);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       document.body.style.overflow = "unset";

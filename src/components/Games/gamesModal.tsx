@@ -17,7 +17,6 @@ export const GamesModal = ({
 }: GamesModalProps) => {
   const [imageError, setImageError] = useState(false);
 
-  // Close modal with Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -36,10 +35,9 @@ export const GamesModal = ({
         className="bg-primary rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-secondary/20"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header Image */}
         <div className="relative">
           <img
-            className="w-full h-64 object-cover"
+            className="w-full h-64"
             src={imageError ? placeholderImage : header_image}
             alt={name || "Imagem do jogo"}
             onError={() => setImageError(true)}
@@ -47,9 +45,7 @@ export const GamesModal = ({
           <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
         </div>
 
-        {/* Content */}
         <div className="p-6 space-y-6">
-          {/* Title and genres */}
           <div className="space-y-3">
             <h1 className="font-title text-3xl font-semibold text-accent line-clamp-2">
               {name}
@@ -69,14 +65,12 @@ export const GamesModal = ({
             )}
           </div>
 
-          {/* Description */}
           <div className="max-h-32 overflow-y-auto">
             <p className="font-paragraph text-lg font-light leading-relaxed text-text/90">
               {short_description || "Descrição não disponível."}
             </p>
           </div>
 
-          {/* Screenshots */}
           {screenshots && screenshots.length > 0 && (
             <div className="space-y-3">
               <h3 className="font-semibold text-accent">Screenshots</h3>
@@ -94,7 +88,6 @@ export const GamesModal = ({
           )}
         </div>
 
-        {/* Close button */}
         <button
           className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
           type="button"

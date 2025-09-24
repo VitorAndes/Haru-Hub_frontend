@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from "react";
 import { Input } from "./components/common/Input";
 import { CardGame } from "./components/Games/cardGame";
 import { GamesRecently } from "./components/GamesRecently/gamesRecently";
-import { PlayerProfile } from "./components/playerProfile";
+import { PlayerProfile } from "./components/user/playerProfile";
 
 export function App() {
   const [inputValue, setInputValue] = useState("");

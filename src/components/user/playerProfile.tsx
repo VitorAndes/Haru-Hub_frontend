@@ -1,9 +1,9 @@
-import { usePlayer } from "../hooks/usePlayer";
-import { getPersonaStateInfo } from "../utils/getPersonaState";
-import { ErrorState } from "./common/errorState";
-import { LoadingState } from "./common/loadingState";
-import { ProfileHeader } from "./user/profileHeader";
-import { ProfileStats } from "./user/profileStats";
+import { usePlayer } from "../../hooks/usePlayer";
+import { getPersonaStateInfo } from "../../utils/getPersonaState";
+import { ErrorState } from "../common/errorState";
+import { LoadingState } from "../common/loadingState";
+import { ProfileHeader } from "./profileHeader";
+import { ProfileStats } from "./profileStats";
 
 export function PlayerProfile() {
   const { error, isLoading, playerProfile, refetch } = usePlayer();

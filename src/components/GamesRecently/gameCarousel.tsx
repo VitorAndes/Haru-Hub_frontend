@@ -27,7 +27,6 @@ export function GameCarousel({ game }: { game: GameDataType }) {
           }}
         />
 
-        {/* Genres overlay */}
         <div className="flex gap-x-1 absolute right-3 bottom-6 font-bold">
           {genres.slice(0, 5).map((genre) => (
             <span
@@ -41,7 +40,6 @@ export function GameCarousel({ game }: { game: GameDataType }) {
       </figure>
 
       <div className="flex flex-col gap-4 h-full w-[460px]">
-        {/* Game info */}
         <div className="p-3 bg-primary/25 backdrop-blur shadow-md shadow-secondary rounded-2xl overflow-hidden h-56">
           <h1 className="font-title text-2xl font-semibold text-accent line-clamp-2">
             {name}
@@ -51,7 +49,6 @@ export function GameCarousel({ game }: { game: GameDataType }) {
           </p>
         </div>
 
-        {/* Screenshot */}
         <figure className="flex w-full h-[230px] overflow-hidden xl:overflow-visible gap-2">
           {screenshots.slice(1, MAX_SCREENSHOTS).map((screenshot) => (
             <img
