@@ -18,13 +18,13 @@ export function App() {
   };
 
   return (
-    <div className="flex lg:p-4 lg:w-[1580px] lg:h-[1000px] gap-4 relative  ">
+    <div className="flex p-0 lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] gap-4">
       <aside>
         <PlayerProfile />
       </aside>
-      <main className="px-8 overflow-hidden overflow-y-scroll bg-scroll rounded-lg flex flex-col relative ">
+      <main className="lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
         <div
-          className={`lg:hidden absolute top-0 right-10 z-50 shadow-sm rounded-2xl border ${personaState.bgColor}`}
+          className={`lg:hidden absolute top-0 right-10 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
         >
           <ProfileAvatar
             avatarUrl={playerProfile?.avatarfull!}

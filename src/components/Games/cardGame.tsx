@@ -77,7 +77,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
                 duration: 0.3,
                 ease: "easeOut",
               }}
-              className="w-full h-full flex items-center justify-center"
+              className="w-full h-full "
             >
               <GamesModal {...selectedGame} onClose={closeModal} />
             </motion.div>

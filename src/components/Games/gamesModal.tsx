@@ -32,7 +32,7 @@ export const GamesModal = ({
       onClick={onClose}
     >
       <div
-        className="bg-primary rounded-2xl max-w-[90vw] h-fit  lg:max-w-2xl lg:w-full lg:max-h-[90vh] overflow-hidden shadow-2xl border border-secondary/20"
+        className="bg-primary rounded-2xl max-w-[90vw] h-fit lg:max-w-2xl lg:w-full lg:max-h-[90vh] overflow-hidden shadow-2xl border border-secondary/20"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">

@@ -14,9 +14,6 @@ export function GamesRecently() {
   if (error) {
     return (
       <div className="flex flex-col items-center gap-4 max-w-7xl">
-        <h1 className="font-title text-xl font-semibold self-start mb-5">
-          Jogados recentemente
-        </h1>
         <ErrorState error={error} onRetry={refetch} />
       </div>
     );

@@ -6,7 +6,7 @@ export function ErrorState({
   onRetry: () => void;
 }) {
   return (
-    <div className="flex items-center justify-center w-[1280px] h-[470px]">
+    <div className="flex items-center justify-center w-full h-[470px]">
       <div className="flex flex-col items-center gap-4 text-center">
         <div className="text-red-500 text-6xl">⚠️</div>
         <h3 className="text-xl font-semibold text-text">
