@@ -4,31 +4,45 @@ import { Input } from "./components/common/Input";
 import { CardGame } from "./components/Games/cardGame";
 import { GamesRecently } from "./components/GamesRecently/gamesRecently";
 import { PlayerProfile } from "./components/user/playerProfile";
+import { ProfileAvatar } from "./components/user/profileAvatar";
+import { usePlayer } from "./hooks/usePlayer";
+import { getPersonaStateInfo } from "./utils/getPersonaState";
 
 export function App() {
   const [inputValue, setInputValue] = useState("");
+  const { playerProfile } = usePlayer();
+  const personaState = getPersonaStateInfo(playerProfile?.personastate!);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
   return (
-    <div className="flex p-4 w-[1580px] h-[1000px] gap-4 relative  ">
+    <div className="flex lg:p-4 lg:w-[1580px] lg:h-[1000px] gap-4 relative  ">
       <aside>
         <PlayerProfile />
       </aside>
-      <main className="px-8 overflow-hidden overflow-y-scroll bg-scroll rounded-lg flex flex-col ">
-        <header className="flex items-center gap-2 justify-between">
+      <main className="px-8 overflow-hidden overflow-y-scroll bg-scroll rounded-lg flex flex-col relative ">
+        <div
+          className={`lg:hidden absolute top-0 right-10 z-50 shadow-sm rounded-2xl border ${personaState.bgColor}`}
+        >
+          <ProfileAvatar
+            avatarUrl={playerProfile?.avatarfull!}
+            personaname={playerProfile?.personaname!}
+            isOnline={playerProfile?.personastate === 1}
+          />
+        </div>
+        <header className="hidden lg:flex items-center gap-2 justify-between relative">
           <h1 className="font-title text-3xl font-bold">
             Bem vindo ao Haru Hub!
           </h1>
         </header>
-        <section className="h-96 mt-10">
+        <section className="h-96 lg:mt-10 ">
           <GamesRecently />
         </section>
-        <section className="flex flex-col gap-7 mt-64">
-          <div className="flex items-baseline justify-between gap-5">
-            <h1 className="font-title text-xl font-semibold mb-5">
+        <section className="flex flex-col lg:gap-7 mt-16 lg:mt-64">
+          <div className="flex items-baseline justify-between lg:gap-5 p-3">
+            <h1 className="font-title text-lg lg:text-xl font-semibold mb-5">
               Todos os jogos
             </h1>
 
@@ -36,7 +50,7 @@ export function App() {
               id="games-name"
               type="text"
               onChange={handleChange}
-              icon={() => <Search size={32} />}
+              icon={() => <Search className="lg:size-8" />}
               placeholder="Procurar jogo..."
             />
           </div>

@@ -37,7 +37,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
   }, []);
 
   if (isLoading) {
-    return <LoadingState />;
+    return <LoadingState className="lg:w-[1280px]" />;
   }
 
   if (error) {
@@ -50,7 +50,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
         {filteredGames.map((game) => (
           <GameCard
             key={game.steam_appid}

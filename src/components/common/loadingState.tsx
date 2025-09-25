@@ -14,10 +14,7 @@ export function LoadingState({
 }) {
   return (
     <div
-      className={cn(
-        "flex items-center justify-center w-[1280px] h-[470px]",
-        className
-      )}
+      className={cn("flex items-center justify-center h-[470px]", className)}
     >
       <div className="flex flex-col items-center gap-4">
         <div className="w-16 h-16 border-4 border-secondary/20 border-t-secondary rounded-full animate-spin" />

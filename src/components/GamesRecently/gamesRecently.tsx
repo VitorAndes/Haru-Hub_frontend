@@ -13,7 +13,7 @@ export function GamesRecently() {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center gap-4 w-[1280px]">
+      <div className="flex flex-col items-center gap-4 max-w-7xl">
         <h1 className="font-title text-xl font-semibold self-start mb-5">
           Jogados recentemente
         </h1>
@@ -23,17 +23,17 @@ export function GamesRecently() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-4 w-[1280px] overflow-hidden">
-      <h1 className="font-title text-xl font-semibold self-start mb-5">
+    <div className="flex flex-col lg:items-center gap-4 w-[440px] lg:w-[1280px] overflow-hidden">
+      <h1 className="hidden lg:block font-title text-xl font-semibold self-start mb-5">
         Jogados recentemente
       </h1>
 
       {isLoading ? (
-        <LoadingState />
+        <LoadingState className="lg:w-[1280px]" />
       ) : (
         <>
           <div
-            className="flex gap-2 transition-all ease-out duration-700 w-[1280px]"
+            className="flex lg:gap-2 transition-all ease-out duration-700 w-[440px] lg:w-[1280px]"
             style={{
               transform: `translateX(-${current * 100}%)`,
             }}

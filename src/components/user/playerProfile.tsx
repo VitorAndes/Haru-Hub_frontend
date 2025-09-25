@@ -28,7 +28,7 @@ export function PlayerProfile() {
 
   return (
     <div
-      className={`flex flex-col justify-between p-4 gap-6 w-56 h-full rounded-2xl shadow-md border backdrop-blur-sm bg-primary/25 transition-all duration-300 ${personaState.bgColor}`}
+      className={`hidden lg:flex flex-col justify-between p-4 gap-6 w-56 h-full rounded-2xl shadow-md border backdrop-blur-sm bg-primary/25 transition-all duration-300 ${personaState.bgColor}`}
     >
       <ProfileHeader profile={playerProfile} />
       <ProfileStats profile={playerProfile} />

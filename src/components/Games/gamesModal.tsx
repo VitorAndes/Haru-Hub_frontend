@@ -32,7 +32,7 @@ export const GamesModal = ({
       onClick={onClose}
     >
       <div
-        className="bg-primary rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-secondary/20"
+        className="bg-primary rounded-2xl max-w-[90vw] h-fit  lg:max-w-2xl lg:w-full lg:max-h-[90vh] overflow-hidden shadow-2xl border border-secondary/20"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
@@ -65,7 +65,7 @@ export const GamesModal = ({
             )}
           </div>
 
-          <div className="max-h-32 overflow-y-auto">
+          <div className="max-h-24 lg:max-h-32 overflow-y-auto">
             <p className="font-paragraph text-lg font-light leading-relaxed text-text/90">
               {short_description || "Descrição não disponível."}
             </p>
@@ -74,8 +74,8 @@ export const GamesModal = ({
           {screenshots && screenshots.length > 0 && (
             <div className="space-y-3">
               <h3 className="font-semibold text-accent">Screenshots</h3>
-              <div className="grid grid-cols-2 gap-2 max-h-60 overflow-hidden">
-                {screenshots.slice(0, 2).map((screenshot) => (
+              <div className="grid grid-cols-1 gap-2 max-h-60 overflow-hidden">
+                {screenshots.slice(0, 1).map((screenshot) => (
                   <img
                     key={screenshot.id}
                     src={screenshot.path_thumbnail}
@@ -89,7 +89,7 @@ export const GamesModal = ({
         </div>
 
         <button
-          className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+          className="absolute top-12 right-9 lg:top-4 lg:right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
           type="button"
           onClick={onClose}
           aria-label="Fechar modal"

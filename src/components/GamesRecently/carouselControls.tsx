@@ -15,9 +15,9 @@ export function CarouselControls({
   onGoTo: (index: number) => void;
 }) {
   return (
-    <div className="flex items-center gap-4 mt-4">
+    <div className="flex items-center ml-3 gap-4 lg:mt-4">
       <button
-        className="hover:text-secondary rounded-full transition-all hover:scale-105 hover:-translate-x-2 duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="hidden lg:block hover:text-secondary rounded-full transition-all hover:scale-105 hover:-translate-x-2 duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={onPrevious}
         disabled={games.length === 0}
         type="button"
@@ -40,7 +40,7 @@ export function CarouselControls({
       </div>
 
       <button
-        className="hover:text-secondary rounded-full transition-all hover:scale-105 hover:translate-x-2 duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="hidden lg:block hover:text-secondary rounded-full transition-all hover:scale-105 hover:translate-x-2 duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={onNext}
         disabled={games.length === 0}
         type="button"
