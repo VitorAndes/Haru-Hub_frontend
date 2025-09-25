@@ -24,7 +24,7 @@ export function App() {
       </aside>
       <main className="lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
         <div
-          className={`lg:hidden absolute top-0 right-10 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
+          className={`lg:hidden absolute top-1 right-2 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
         >
           <ProfileAvatar
             avatarUrl={playerProfile?.avatarfull!}

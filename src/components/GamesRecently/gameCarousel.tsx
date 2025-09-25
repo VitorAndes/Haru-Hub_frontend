@@ -14,11 +14,14 @@ export function GameCarousel({ game }: { game: GameDataType }) {
   } = game;
 
   return (
-    <div key={steam_appid} className="flex flex-col gap-2 flex-shrink-0 ml-0">
-      <figure className="w-[440px] relative">
+    <div
+      key={steam_appid}
+      className="flex flex-col lg:flex-row gap-2 flex-shrink-0 ml-0 lg:ml-6"
+    >
+      <figure className="w-[440px] lg:w-[800px] relative">
         <img
           loading="lazy"
-          className="rounded-2xl shadow shadow-secondary bg-primary/80 w-full h-[204px]"
+          className="rounded-2xl shadow shadow-secondary bg-primary/80 w-full h-[204px] lg:h-[490px]"
           src={header_image || imgLoading}
           alt={`Imagem de ${name}`}
           onError={(e) => {
@@ -39,7 +42,7 @@ export function GameCarousel({ game }: { game: GameDataType }) {
         </div>
       </figure>
 
-      <div className="flex flex-col gap-4 h-full w-[440px]">
+      <div className="flex flex-col gap-4 h-[160px] lg:h-full w-[440px]">
         <div className="p-3 lg:bg-primary/25 lg:backdrop-blur lg:shadow-md lg:shadow-secondary rounded-2xl lg:overflow-hidden h-56">
           <h1 className="font-title text-2xl font-semibold text-accent line-clamp-2">
             {name}
@@ -49,7 +52,7 @@ export function GameCarousel({ game }: { game: GameDataType }) {
           </p>
         </div>
 
-        <figure className="hidden w-full h-[230px] overflow-hidden xl:overflow-visible gap-2">
+        <figure className="hidden lg:block w-full h-[230px] overflow-hidden xl:overflow-visible gap-2">
           {screenshots.slice(1, MAX_SCREENSHOTS).map((screenshot) => (
             <img
               key={screenshot.id}
