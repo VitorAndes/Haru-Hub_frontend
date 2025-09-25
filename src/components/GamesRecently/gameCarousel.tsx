@@ -21,7 +21,7 @@ export function GameCarousel({ game }: { game: GameDataType }) {
       <figure className="w-[440px] lg:w-[800px] relative">
         <img
           loading="lazy"
-          className="rounded-2xl shadow shadow-secondary bg-primary/80 w-full h-[204px] lg:h-[490px]"
+          className="rounded-t-2xl lg:rounded-2xl shadow shadow-secondary bg-primary/80 w-full h-[204px] lg:h-[490px]"
           src={header_image || imgLoading}
           alt={`Imagem de ${name}`}
           onError={(e) => {
