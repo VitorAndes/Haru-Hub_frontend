@@ -30,7 +30,7 @@ export function CarouselGames() {
       ) : (
         <>
           <div
-            className="flex lg:gap-2 transition-all ease-out duration-700 w-[440px] lg:w-[1280px]"
+            className="flex lg:gap-2 transition-all ease-out duration-700 min-w-[200px] max-w-[440px] lg:max-w-[1280px]"
             style={{
               transform: `translateX(-${current * 100}%)`,
             }}

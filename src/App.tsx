@@ -18,11 +18,11 @@ export function App() {
   };
 
   return (
-    <div className="flex p-0 lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] lg:gap-4">
+    <div className="flex lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] lg:gap-4">
       <aside>
         <PlayerProfile />
       </aside>
-      <main className="lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
+      <main className="px-4 lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
         <div
           className={`lg:hidden absolute top-1 right-2 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
         >
