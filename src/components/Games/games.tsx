@@ -1,5 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { GamesType, useGamesData } from "../../hooks/useGame";
 import { useGameFilter } from "../../hooks/useGameFilter";
 import { EmptyState } from "../common/emptyState";
@@ -17,22 +16,44 @@ export function Games({ filterSearch }: CardGameProps) {
   const filteredGames = useGameFilter(games, filterSearch);
   const [selectedGame, setSelectedGame] = useState<GamesType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const timeoutRef = useRef(null);
 
   const openModal = useCallback((game: GamesType) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+
     setSelectedGame(game);
     setIsModalOpen(true);
+
+    requestAnimationFrame(() => {
+      setIsModalVisible(true);
+    });
     document.body.style.overflow = "hidden";
   }, []);
 
   const closeModal = useCallback(() => {
-    setIsModalOpen(false);
-    setSelectedGame(null);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setIsModalVisible(false);
+
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setSelectedGame(null);
+    }, 1000);
     document.body.style.overflow = "unset";
   }, []);
 
   useEffect(() => {
     return () => {
       document.body.style.overflow = "unset";
+
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
   }, []);
 
@@ -60,30 +81,21 @@ export function Games({ filterSearch }: CardGameProps) {
         ))}
       </div>
 
-      <AnimatePresence>
-        {isModalOpen && selectedGame && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.1 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+      {isModalOpen && selectedGame && (
+        <div
+          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-100 ${
+            isModalVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <div
+            className={`w-full h-full transition-all duration-300 ease-out ${
+              isModalVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
+            }`}
           >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{
-                duration: 0.1,
-                ease: "easeOut",
-              }}
-              className="w-full h-full "
-            >
-              <GamesModal {...selectedGame} onClose={closeModal} />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <GamesModal {...selectedGame} onClose={closeModal} />
+          </div>
+        </div>
+      )}
     </>
   );
 }
