@@ -18,7 +18,7 @@ export function App() {
   };
 
   return (
-    <div className="flex p-0 lg:p-4 h-full items-center justify-center lg:w-[1580px] lg:h-[1000px] lg:gap-4">
+    <div className="flex p-0 lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] lg:gap-4">
       <aside>
         <PlayerProfile />
       </aside>
