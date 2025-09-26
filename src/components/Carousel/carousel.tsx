@@ -3,7 +3,7 @@ import { GameDataType } from "../../hooks/useRecentlyPlayedGames";
 
 const MAX_SCREENSHOTS = 2;
 
-export function GameCarousel({ game }: { game: GameDataType }) {
+export function Carousel({ game }: { game: GameDataType }) {
   const {
     steam_appid,
     header_image,

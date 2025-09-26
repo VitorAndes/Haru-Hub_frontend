@@ -1,9 +1,9 @@
 import { XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import placeholderImage from "../../assets/placeholder-game.webp";
-import { Games } from "../../hooks/useGame";
+import { GamesType } from "../../hooks/useGame";
 
-type GamesModalProps = Games & {
+type GamesModalProps = GamesType & {
   onClose: () => void;
 };
 

@@ -2,10 +2,10 @@ import { useCarousel } from "../../hooks/useCarousel";
 import { useRecentlyPlayedGames } from "../../hooks/useRecentlyPlayedGames";
 import { ErrorState } from "../common/errorState";
 import { LoadingState } from "../common/loadingState";
+import { Carousel } from "./carousel";
 import { CarouselControls } from "./carouselControls";
-import { GameCarousel } from "./gameCarousel";
 
-export function GamesRecently() {
+export function CarouselGames() {
   const { games, isLoading, error, refetch } = useRecentlyPlayedGames();
   const { current, previousSlide, nextSlide, goToSlide } = useCarousel(
     games.length
@@ -36,7 +36,7 @@ export function GamesRecently() {
             }}
           >
             {games.map((game) => (
-              <GameCarousel key={game.steam_appid} game={game} />
+              <Carousel key={game.steam_appid} game={game} />
             ))}
           </div>
 

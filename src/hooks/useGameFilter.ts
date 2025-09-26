@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { Games } from "./useGame";
+import { GamesType } from "./useGame";
 
-export function useGameFilter(games: Games[], filterSearch: string) {
+export function useGameFilter(games: GamesType[], filterSearch: string) {
   return useMemo(() => {
     if (!filterSearch.trim()) return games;
 

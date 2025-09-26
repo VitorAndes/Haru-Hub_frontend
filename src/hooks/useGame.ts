@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 const API_BASE_URL = "https://haru-hub-backend.onrender.com";
 
-export type Games = {
+export type GamesType = {
   name: string;
   steam_appid: number;
   header_image: string;
@@ -13,7 +13,7 @@ export type Games = {
 
 type GameResponseType = {
   success: boolean;
-  data: Games;
+  data: GamesType;
 };
 
 type ApiResponse = {
@@ -23,7 +23,7 @@ type ApiResponse = {
 };
 
 export function useGamesData() {
-  const [games, setGames] = useState<Games[]>([]);
+  const [games, setGames] = useState<GamesType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -59,7 +59,7 @@ export function useGamesData() {
             typeof game.data === "object"
         )
         .map((game) => game.data)
-        .filter((game): game is Games =>
+        .filter((game): game is GamesType =>
           Boolean(game.name && game.steam_appid && game.header_image)
         );
 

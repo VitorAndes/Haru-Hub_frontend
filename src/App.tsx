@@ -1,8 +1,8 @@
 import { Search } from "lucide-react";
 import { ChangeEvent, useState } from "react";
+import { CarouselGames } from "./components/Carousel/carouselGames";
 import { Input } from "./components/common/Input";
-import { CardGame } from "./components/Games/cardGame";
-import { GamesRecently } from "./components/GamesRecently/gamesRecently";
+import { Games } from "./components/Games/games";
 import { PlayerProfile } from "./components/user/playerProfile";
 import { ProfileAvatar } from "./components/user/profileAvatar";
 import { usePlayer } from "./hooks/usePlayer";
@@ -18,7 +18,7 @@ export function App() {
   };
 
   return (
-    <div className="flex p-0 lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] gap-4">
+    <div className="flex p-0 lg:p-4 h-full items-center justify-center lg:w-[1580px] lg:h-[1000px] lg:gap-4">
       <aside>
         <PlayerProfile />
       </aside>
@@ -38,7 +38,7 @@ export function App() {
           </h1>
         </header>
         <section className="h-96 lg:mt-10 ">
-          <GamesRecently />
+          <CarouselGames />
         </section>
         <section className="flex flex-col lg:gap-7 mt-16 lg:mt-64">
           <div className="flex items-baseline justify-between lg:gap-5 p-3">
@@ -55,7 +55,7 @@ export function App() {
             />
           </div>
 
-          <CardGame filterSearch={inputValue} />
+          <Games filterSearch={inputValue} />
         </section>
       </main>
     </div>

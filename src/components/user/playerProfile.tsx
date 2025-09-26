@@ -9,7 +9,12 @@ export function PlayerProfile() {
   const { error, isLoading, playerProfile, refetch } = usePlayer();
 
   if (isLoading) {
-    return <LoadingState className="h-full w-60" loadingTitle={"perfil"} />;
+    return (
+      <LoadingState
+        className="hidden lg:block h-full w-60"
+        loadingTitle={"perfil"}
+      />
+    );
   }
 
   if (error) {

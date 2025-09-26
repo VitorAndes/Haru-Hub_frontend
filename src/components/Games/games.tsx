@@ -1,24 +1,24 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useState } from "react";
-import { Games, useGamesData } from "../../hooks/useGame";
+import { GamesType, useGamesData } from "../../hooks/useGame";
 import { useGameFilter } from "../../hooks/useGameFilter";
 import { EmptyState } from "../common/emptyState";
 import { ErrorState } from "../common/errorState";
 import { LoadingState } from "../common/loadingState";
-import { GameCard } from "./gameCard";
+import { GamesCard } from "./gamesCard";
 import { GamesModal } from "./gamesModal";
 
 interface CardGameProps {
   filterSearch: string;
 }
 
-export function CardGame({ filterSearch }: CardGameProps) {
+export function Games({ filterSearch }: CardGameProps) {
   const { games, isLoading, error, refetch } = useGamesData();
   const filteredGames = useGameFilter(games, filterSearch);
-  const [selectedGame, setSelectedGame] = useState<Games | null>(null);
+  const [selectedGame, setSelectedGame] = useState<GamesType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = useCallback((game: Games) => {
+  const openModal = useCallback((game: GamesType) => {
     setSelectedGame(game);
     setIsModalOpen(true);
     document.body.style.overflow = "hidden";
@@ -37,7 +37,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
   }, []);
 
   if (isLoading) {
-    return <LoadingState className="lg:w-[1280px]" />;
+    return <LoadingState className=" lg:w-[1280px]" />;
   }
 
   if (error) {
@@ -52,7 +52,7 @@ export function CardGame({ filterSearch }: CardGameProps) {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
         {filteredGames.map((game) => (
-          <GameCard
+          <GamesCard
             key={game.steam_appid}
             game={game}
             onOpenModal={openModal}

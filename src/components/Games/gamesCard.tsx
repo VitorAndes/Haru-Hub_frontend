@@ -1,13 +1,13 @@
 import { useState } from "react";
 import placeholderImage from "../../assets/placeholder-game.webp";
-import { Games } from "../../hooks/useGame";
+import { GamesType } from "../../hooks/useGame";
 
-export function GameCard({
+export function GamesCard({
   game,
   onOpenModal,
 }: {
-  game: Games;
-  onOpenModal: (game: Games) => void;
+  game: GamesType;
+  onOpenModal: (game: GamesType) => void;
 }) {
   const [imageError, setImageError] = useState(false);
 
