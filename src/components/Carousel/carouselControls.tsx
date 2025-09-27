@@ -1,5 +1,5 @@
 import { ChevronLeftCircle, ChevronRightCircle } from "lucide-react";
-import { GameDataType } from "../../hooks/useRecentlyPlayedGames";
+import { GamesType } from "../../api/fetchGames";
 
 export function CarouselControls({
   games,
@@ -8,7 +8,7 @@ export function CarouselControls({
   onNext,
   onGoTo,
 }: {
-  games: GameDataType[];
+  games: GamesType[];
   current: number;
   onPrevious: () => void;
   onNext: () => void;

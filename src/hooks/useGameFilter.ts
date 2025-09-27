@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { GamesType } from "./useGame";
+import { GamesType } from "../api/fetchGames";
 
 export function useGameFilter(games: GamesType[], filterSearch: string) {
   return useMemo(() => {

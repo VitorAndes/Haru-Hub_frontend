@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import { UserProfileType } from "../../hooks/usePlayer";
+import { UserProfileType } from "../../api/fetchUser";
 import { getPersonaStateInfo } from "../../utils/getPersonaState";
 import { ProfileAvatar } from "./profileAvatar";
 

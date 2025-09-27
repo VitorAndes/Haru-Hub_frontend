@@ -1,16 +1,17 @@
 import { Search } from "lucide-react";
 import { ChangeEvent, useState } from "react";
+
 import { CarouselGames } from "./components/Carousel/carouselGames";
 import { Input } from "./components/common/Input";
 import { Games } from "./components/Games/games";
 import { PlayerProfile } from "./components/user/playerProfile";
 import { ProfileAvatar } from "./components/user/profileAvatar";
-import { usePlayer } from "./hooks/usePlayer";
+import { useAppData } from "./hooks/useAppData";
 import { getPersonaStateInfo } from "./utils/getPersonaState";
 
 export function App() {
   const [inputValue, setInputValue] = useState("");
-  const { playerProfile } = usePlayer();
+  const { playerProfile } = useAppData();
   const personaState = getPersonaStateInfo(playerProfile?.personastate!);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

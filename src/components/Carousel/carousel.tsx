@@ -1,9 +1,9 @@
+import { RecentGamesType } from "../../api/fetchRecentGames";
 import imgLoading from "../../assets/placeholder-game.webp";
-import { GameDataType } from "../../hooks/useRecentlyPlayedGames";
 
 const MAX_SCREENSHOTS = 2;
 
-export function Carousel({ game }: { game: GameDataType }) {
+export function Carousel({ game }: { game: RecentGamesType }) {
   const {
     steam_appid,
     header_image,

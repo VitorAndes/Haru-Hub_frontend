@@ -1,4 +1,4 @@
-import { usePlayer } from "../../hooks/usePlayer";
+import { useAppDataContext } from "../../context/AppDataProvider";
 import { getPersonaStateInfo } from "../../utils/getPersonaState";
 import { ErrorState } from "../common/errorState";
 import { LoadingState } from "../common/loadingState";
@@ -6,7 +6,7 @@ import { ProfileHeader } from "./profileHeader";
 import { ProfileStats } from "./profileStats";
 
 export function PlayerProfile() {
-  const { error, isLoading, playerProfile, refetch } = usePlayer();
+  const { error, isLoading, playerProfile, refetch } = useAppDataContext();
 
   if (isLoading) {
     return (

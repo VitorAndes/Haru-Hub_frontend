@@ -1,20 +1,21 @@
+import { useAppDataContext } from "../../context/AppDataProvider";
 import { useCarousel } from "../../hooks/useCarousel";
-import { useRecentlyPlayedGames } from "../../hooks/useRecentlyPlayedGames";
 import { ErrorState } from "../common/errorState";
 import { LoadingState } from "../common/loadingState";
 import { Carousel } from "./carousel";
 import { CarouselControls } from "./carouselControls";
 
 export function CarouselGames() {
-  const { games, isLoading, error, refetch } = useRecentlyPlayedGames();
+  const { recentGames, isLoading, recentGamesError, refetch } =
+    useAppDataContext();
   const { current, previousSlide, nextSlide, goToSlide } = useCarousel(
-    games.length
+    recentGames.length
   );
 
-  if (error) {
+  if (recentGamesError) {
     return (
       <div className="flex flex-col items-center gap-4 max-w-7xl">
-        <ErrorState error={error} onRetry={refetch} />
+        <ErrorState error={recentGamesError} onRetry={refetch} />
       </div>
     );
   }
@@ -35,13 +36,13 @@ export function CarouselGames() {
               transform: `translateX(-${current * 100}%)`,
             }}
           >
-            {games.map((game) => (
+            {recentGames.map((game) => (
               <Carousel key={game.steam_appid} game={game} />
             ))}
           </div>
 
           <CarouselControls
-            games={games}
+            games={recentGames}
             current={current}
             onPrevious={previousSlide}
             onNext={nextSlide}

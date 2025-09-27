@@ -1,5 +1,5 @@
 import { Calendar, Clock, User } from "lucide-react";
-import { UserProfileType } from "../../hooks/usePlayer";
+import { UserProfileType } from "../../api/fetchUser";
 import { formatDate, formatLastSeen } from "../../utils/formatDate";
 
 export function ProfileStats({ profile }: { profile: UserProfileType }) {

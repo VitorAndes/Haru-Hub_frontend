@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GamesType, useGamesData } from "../../hooks/useGame";
+import { GamesType } from "../../api/fetchGames";
+import { useAppDataContext } from "../../context/AppDataProvider";
 import { useGameFilter } from "../../hooks/useGameFilter";
 import { EmptyState } from "../common/emptyState";
 import { ErrorState } from "../common/errorState";
@@ -12,7 +13,7 @@ interface CardGameProps {
 }
 
 export function Games({ filterSearch }: CardGameProps) {
-  const { games, isLoading, error, refetch } = useGamesData();
+  const { games, isLoading, error, refetch } = useAppDataContext();
   const filteredGames = useGameFilter(games, filterSearch);
   const [selectedGame, setSelectedGame] = useState<GamesType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

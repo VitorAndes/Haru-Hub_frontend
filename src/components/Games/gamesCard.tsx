@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { GamesType } from "../../api/fetchGames";
 import placeholderImage from "../../assets/placeholder-game.webp";
-import { GamesType } from "../../hooks/useGame";
 
 export function GamesCard({
   game,
