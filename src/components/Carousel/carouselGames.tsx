@@ -21,7 +21,7 @@ export function CarouselGames() {
   }
 
   return (
-    <div className="flex flex-col lg:items-center gap-4 w-[440px] lg:w-[1280px] overflow-hidden">
+    <div className="flex flex-col lg:items-center gap-4 max-w-[440px] lg:w-[1280px] overflow-hidden">
       <h1 className="hidden lg:block font-title text-xl font-semibold self-start mb-5">
         Jogados recentemente
       </h1>
@@ -31,7 +31,7 @@ export function CarouselGames() {
       ) : (
         <>
           <div
-            className="flex lg:gap-2 transition-all ease-out duration-700 min-w-[200px] max-w-[440px] lg:max-w-[1280px]"
+            className="flex lg:gap-2 transition-all ease-out duration-700 w-full lg:max-w-[1280px]"
             style={{
               transform: `translateX(-${current * 100}%)`,
             }}

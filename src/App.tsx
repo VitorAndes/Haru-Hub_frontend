@@ -19,7 +19,7 @@ export function App() {
   };
 
   return (
-    <div className="px-4 flex lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] lg:gap-4">
+    <div className="flex lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] lg:gap-4">
       <aside>
         <PlayerProfile />
       </aside>
@@ -38,7 +38,7 @@ export function App() {
             Bem vindo ao Haru Hub!
           </h1>
         </header>
-        <section className="h-96 lg:mt-10 ">
+        <section className="m-auto h-96 lg:mt-10 ">
           <CarouselGames />
         </section>
         <section className="flex flex-col lg:gap-7 mt-16 lg:mt-64">
