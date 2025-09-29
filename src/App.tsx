@@ -38,10 +38,10 @@ export function App() {
             Bem vindo ao Haru Hub!
           </h1>
         </header>
-        <section className="m-auto h-96 lg:mt-10 ">
+        <section className="m-auto lg:mt-10 ">
           <CarouselGames />
         </section>
-        <section className="flex flex-col lg:gap-7 mt-16 lg:mt-64">
+        <section className="flex flex-col lg:gap-7 mt-16">
           <div className="flex items-baseline justify-between lg:gap-5 px-7">
             <h1 className="font-title text-lg lg:text-xl font-semibold mb-5">
               Todos os jogos
