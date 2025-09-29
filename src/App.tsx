@@ -23,7 +23,7 @@ export function App() {
       <aside>
         <PlayerProfile />
       </aside>
-      <main className="lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
+      <main className="max-w-96 lg:max-w-full lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
         <div
           className={`lg:hidden absolute top-1 right-2 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
         >
@@ -42,7 +42,7 @@ export function App() {
           <CarouselGames />
         </section>
         <section className="flex flex-col lg:gap-7 mt-16">
-          <div className="flex items-baseline justify-between lg:gap-5 px-7">
+          <div className="flex flex-wrap items-baseline justify-between lg:gap-5 px-7 lg:px-0">
             <h1 className="font-title text-lg lg:text-xl font-semibold mb-5">
               Todos os jogos
             </h1>

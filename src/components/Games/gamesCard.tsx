@@ -13,7 +13,7 @@ export function GamesCard({
 
   return (
     <figure
-      className="w-full lg:w-[400px] lg:h-60 relative group cursor-pointer"
+      className="max-w-96 lg:w-[400px] lg:h-60 relative group cursor-pointer"
       onClick={() => onOpenModal(game)}
     >
       <div className="relative w-full h-full overflow-hidden rounded-2xl bg-primary/80">
