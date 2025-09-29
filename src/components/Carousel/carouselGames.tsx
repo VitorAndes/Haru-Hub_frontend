@@ -21,7 +21,7 @@ export function CarouselGames() {
   }
 
   return (
-    <div className="flex flex-col lg:items-center gap-4 max-w-[440px] lg:w-[1280px] overflow-hidden">
+    <div className="flex flex-col lg:items-center gap-4 max-w-[440px] lg:max-w-[1280px] overflow-hidden">
       <h1 className="hidden lg:block font-title text-xl font-semibold self-start mb-5">
         Jogados recentemente
       </h1>
