@@ -72,7 +72,7 @@ export function Games({ filterSearch }: CardGameProps) {
 
   return (
     <>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6 px-7 lg:p-4">
         {filteredGames.map((game) => (
           <GamesCard
             key={game.steam_appid}

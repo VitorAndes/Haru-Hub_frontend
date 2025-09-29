@@ -42,7 +42,7 @@ export function App() {
           <CarouselGames />
         </section>
         <section className="flex flex-col lg:gap-7 mt-16 lg:mt-64">
-          <div className="flex items-baseline justify-between lg:gap-5 p-3">
+          <div className="flex items-baseline justify-between lg:gap-5 px-7">
             <h1 className="font-title text-lg lg:text-xl font-semibold mb-5">
               Todos os jogos
             </h1>
