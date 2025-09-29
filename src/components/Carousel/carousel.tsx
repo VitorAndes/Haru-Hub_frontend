@@ -16,7 +16,7 @@ export function Carousel({ game }: { game: RecentGamesType }) {
   return (
     <div
       key={steam_appid}
-      className="flex flex-col lg:flex-row w-full flex-shrink-0"
+      className="flex flex-col lg:flex-row w-full flex-shrink-0 gap-2"
     >
       <figure className="max-w-96 lg:flex-1 lg:max-w-[800px] relative">
         <img
@@ -41,7 +41,7 @@ export function Carousel({ game }: { game: RecentGamesType }) {
         </div>
       </figure>
 
-      <div className="flex flex-1 flex-col gap-4 h-auto lg:h-full max-w-96 lg:max-w-[460px] px-4">
+      <div className="flex flex-1 flex-col gap-4 h-auto lg:h-full max-w-96 lg:max-w-[460px]">
         <div className="flex-1 p-3 lg:bg-primary/25 lg:backdrop-blur lg:shadow-md lg:shadow-secondary rounded-2xl lg:overflow-hidden">
           <h1 className="font-title text-xl md:text-2xl font-semibold text-accent line-clamp-2">
             {name}

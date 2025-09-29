@@ -19,7 +19,7 @@ export function App() {
   };
 
   return (
-    <div className="flex lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] lg:gap-4">
+    <div className="flex lg:p-4 h-dvh lg:w-[1580px] lg:h-[1000px] lg:gap-4">
       <aside>
         <PlayerProfile />
       </aside>
@@ -42,7 +42,7 @@ export function App() {
           <CarouselGames />
         </section>
         <section className="flex flex-col lg:gap-7 mt-16">
-          <div className="flex flex-wrap items-baseline justify-between lg:gap-5 px-7 lg:px-0">
+          <div className="flex flex-wrap items-baseline justify-between lg:gap-5 px-3 lg:px-0">
             <h1 className="font-title text-lg lg:text-xl font-semibold mb-5">
               Todos os jogos
             </h1>
