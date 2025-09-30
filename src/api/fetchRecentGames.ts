@@ -28,31 +28,22 @@ export type ApiResponse = {
 };
 
 export async function fetchRecentGames(): Promise<RecentGamesType[]> {
-  try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/recentlyPlayedGames`
-    );
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/recentlyPlayedGames`
+  );
 
-    if (!response.ok) {
-      throw new Error("Error: " + response.status + ": " + response.statusText);
-    }
-
-    const data: ApiResponse = await response.json();
-
-    const recentGames = Object.values(data.games)
-      .map((game) => game.data)
-      .reverse();
-
-    if (recentGames.length === 0) throw new Error("Nenhum jogo encontrado");
-
-    console.log("Jogos recentes carregados: " + data.totalGames);
-    return recentGames;
-  } catch (error) {
-    const errorMessage =
-      error instanceof Error
-        ? error.message
-        : "Erro desconhecido na rota /recentlyPlayedGames";
-    console.log("Erro na rota /recentlyPlayedGames: " + errorMessage);
-    return [];
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
   }
+
+  const data: ApiResponse = await response.json();
+  const recentGames = Object.values(data.games)
+    .map((game) => game.data)
+    .reverse();
+
+  if (import.meta.env.DEV) {
+    console.log("Jogos recentes carregados:", data.totalGames);
+  }
+
+  return recentGames;
 }

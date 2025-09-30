@@ -20,9 +20,7 @@ export function useAppData() {
     playerProfile: null,
     games: [],
     recentGames: [],
-
     isLoading: true,
-
     userError: null,
     gamesError: null,
     recentGamesError: null,
@@ -30,7 +28,14 @@ export function useAppData() {
   });
 
   const fetchAllData = useCallback(async () => {
-    setDataState((prev) => ({ ...prev, isLoading: true, error: null }));
+    setDataState((prev) => ({
+      ...prev,
+      isLoading: true,
+      userError: null,
+      gamesError: null,
+      recentGamesError: null,
+      error: null,
+    }));
 
     const [userResult, gamesResult, recentResult] = await Promise.allSettled([
       fetchUser(),
@@ -38,28 +43,41 @@ export function useAppData() {
       fetchRecentGames(),
     ]);
 
-    setDataState((prev) => ({
-      ...prev,
+    setDataState({
       playerProfile:
         userResult.status === "fulfilled" ? userResult.value : null,
       games: gamesResult.status === "fulfilled" ? gamesResult.value : [],
       recentGames:
         recentResult.status === "fulfilled" ? recentResult.value : [],
-
       isLoading: false,
-
-      userError: userResult.status === "rejected" ? userResult.reason : null,
-      gamesError: gamesResult.status === "rejected" ? gamesResult.reason : null,
+      userError:
+        userResult.status === "rejected"
+          ? userResult.reason instanceof Error
+            ? userResult.reason.message
+            : String(userResult.reason)
+          : null,
+      gamesError:
+        gamesResult.status === "rejected"
+          ? gamesResult.reason instanceof Error
+            ? gamesResult.reason.message
+            : String(gamesResult.reason)
+          : null,
       recentGamesError:
-        recentResult.status === "rejected" ? recentResult.reason : null,
+        recentResult.status === "rejected"
+          ? recentResult.reason instanceof Error
+            ? recentResult.reason.message
+            : String(recentResult.reason)
+          : null,
       error: null,
-    }));
+    });
   }, []);
 
   useEffect(() => {
-    console.log("useAppData effect rodou");
+    if (import.meta.env.DEV) {
+      console.log("useAppData: Carregando dados...");
+    }
     fetchAllData();
-  }, []);
+  }, [fetchAllData]);
 
   return { ...dataState, refetch: fetchAllData };
 }

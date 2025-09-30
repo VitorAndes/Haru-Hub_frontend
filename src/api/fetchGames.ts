@@ -19,28 +19,18 @@ type ApiResponse = {
 };
 
 export async function fetchGames(): Promise<GamesType[]> {
-  try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/games`);
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/games`);
 
-    if (!response.ok) {
-      throw new Error("Error: " + response.status + ": " + response.statusText);
-    }
-
-    const data: ApiResponse = await response.json();
-
-    const games = Object.values(data.games).map((game) => game.data);
-
-    if (games.length === 0) throw new Error("Nenhum jogo encontrado");
-
-    console.log("Jogos carregados: " + data.totalGames);
-
-    return games;
-  } catch (error) {
-    const errorMessage =
-      error instanceof Error
-        ? error.message
-        : "Erro desconhecido na rota /games";
-    console.log("Erro na rota /games: ", errorMessage);
-    return [];
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
   }
+
+  const data: ApiResponse = await response.json();
+  const games = Object.values(data.games).map((game) => game.data);
+
+  if (import.meta.env.DEV) {
+    console.log("Jogos carregados:", data.totalGames);
+  }
+
+  return games;
 }
