@@ -20,6 +20,8 @@ export function Carousel({ game }: { game: RecentGamesType }) {
     >
       <figure className="max-w-96 lg:flex-1 lg:max-w-[800px] relative">
         <img
+          loading="lazy"
+          fetchPriority="high"
           className="rounded-b-2xl lg:rounded-2xl shadow shadow-secondary bg-primary/80 w-full h-full "
           src={header_image || imgLoading}
           alt={`Imagem de ${name}`}
