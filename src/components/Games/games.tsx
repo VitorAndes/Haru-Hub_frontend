@@ -20,8 +20,6 @@ export function Games({ filterSearch }: CardGameProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const timeoutRef = useRef(null);
 
-  const a = new URLSearchParams();
-
   const openModal = useCallback((game: GamesType) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
