@@ -19,7 +19,7 @@ export function App() {
   };
 
   return (
-    <div className="flex lg:p-4 h-dvh lg:w-[1580px] lg:h-[1000px] lg:gap-4">
+    <div className="flex lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] lg:gap-4">
       <aside>
         <PlayerProfile />
       </aside>

@@ -21,7 +21,7 @@ export default {
 			},
 		},
 		fontFamily: {
-			title: "Bree Serif",
+			title: "Montserrat",
 			paragraph: "Inter",
 		},
 	},

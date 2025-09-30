@@ -41,7 +41,7 @@ export async function fetchUser(): Promise<UserProfileType | null> {
       error instanceof Error
         ? error.message
         : "Erro desconhecido na rota /user";
-    console.error("Deu erro ai mano: " + errorMessage);
+    console.log("Erro na rota / user: ", errorMessage);
     return null;
   }
 }

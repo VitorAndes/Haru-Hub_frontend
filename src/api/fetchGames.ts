@@ -40,7 +40,7 @@ export async function fetchGames(): Promise<GamesType[]> {
       error instanceof Error
         ? error.message
         : "Erro desconhecido na rota /games";
-    console.error("Deu erro ai mano: " + errorMessage);
+    console.log("Erro na rota /games: ", errorMessage);
     return [];
   }
 }

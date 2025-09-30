@@ -52,7 +52,7 @@ export async function fetchRecentGames(): Promise<RecentGamesType[]> {
       error instanceof Error
         ? error.message
         : "Erro desconhecido na rota /recentlyPlayedGames";
-    console.error("Deu erro ai mano: " + errorMessage);
+    console.log("Erro na rota /recentlyPlayedGames: " + errorMessage);
     return [];
   }
 }

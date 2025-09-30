@@ -13,12 +13,14 @@ interface CardGameProps {
 }
 
 export function Games({ filterSearch }: CardGameProps) {
-  const { games, isLoading, error, refetch } = useAppDataContext();
+  const { games, isLoading, gamesError, refetch } = useAppDataContext();
   const filteredGames = useGameFilter(games, filterSearch);
   const [selectedGame, setSelectedGame] = useState<GamesType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const timeoutRef = useRef(null);
+
+  const a = new URLSearchParams();
 
   const openModal = useCallback((game: GamesType) => {
     if (timeoutRef.current) {
@@ -62,8 +64,8 @@ export function Games({ filterSearch }: CardGameProps) {
     return <LoadingState className=" lg:w-[1280px]" />;
   }
 
-  if (error) {
-    return <ErrorState error={error} onRetry={refetch} />;
+  if (gamesError) {
+    return <ErrorState error={gamesError} onRetry={refetch} />;
   }
 
   if (filteredGames.length === 0) {
