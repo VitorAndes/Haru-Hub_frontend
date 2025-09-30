@@ -23,7 +23,7 @@ export function App() {
       <aside>
         <PlayerProfile />
       </aside>
-      <main className="max-w-96 lg:max-w-full lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
+      <main className="pb-8 lg:pb-0 max-w-96 lg:max-w-full lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
         <div
           className={`lg:hidden absolute top-1 right-2 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
         >
