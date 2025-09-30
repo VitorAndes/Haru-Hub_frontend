@@ -6,12 +6,12 @@ import { Input } from "./components/common/Input";
 import { Games } from "./components/Games/games";
 import { PlayerProfile } from "./components/user/playerProfile";
 import { ProfileAvatar } from "./components/user/profileAvatar";
-import { useAppData } from "./hooks/useAppData";
+import { useAppDataContext } from "./context/AppDataProvider";
 import { getPersonaStateInfo } from "./utils/getPersonaState";
 
 export function App() {
   const [inputValue, setInputValue] = useState("");
-  const { playerProfile } = useAppData();
+  const { playerProfile } = useAppDataContext();
   const personaState = getPersonaStateInfo(playerProfile?.personastate!);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
