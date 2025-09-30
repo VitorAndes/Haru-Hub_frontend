@@ -1,19 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
-import { fetchGames, GamesType } from "../api/fetchGames";
-import { fetchRecentGames, RecentGamesType } from "../api/fetchRecentGames";
-import { fetchUser, UserProfileType } from "../api/fetchUser";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { GamesType, fetchGames } from "../api/fetchGames";
+import { RecentGamesType, fetchRecentGames } from "../api/fetchRecentGames";
+import { UserProfileType, fetchUser } from "../api/fetchUser";
 
-interface AppDataState {
+type AppDataState = {
   playerProfile: UserProfileType | null;
   games: GamesType[];
   recentGames: RecentGamesType[];
-
   isLoading: boolean;
   userError: string | null;
   gamesError: string | null;
   recentGamesError: string | null;
   error: string | null;
-}
+};
 
 export function useAppData() {
   const [dataState, setDataState] = useState<AppDataState>({
@@ -27,6 +26,8 @@ export function useAppData() {
     error: null,
   });
 
+  const hasFetched = useRef(false);
+
   const fetchAllData = useCallback(async () => {
     setDataState((prev) => ({
       ...prev,
@@ -36,6 +37,10 @@ export function useAppData() {
       recentGamesError: null,
       error: null,
     }));
+
+    if (import.meta.env.DEV) {
+      console.log(" Iniciando fetch de dados...");
+    }
 
     const [userResult, gamesResult, recentResult] = await Promise.allSettled([
       fetchUser(),
@@ -70,12 +75,26 @@ export function useAppData() {
           : null,
       error: null,
     });
+
+    if (import.meta.env.DEV) {
+      console.log("Fetch concluído");
+    }
   }, []);
 
   useEffect(() => {
-    if (import.meta.env.DEV) {
-      console.log("useAppData: Carregando dados...");
+    if (hasFetched.current) {
+      if (import.meta.env.DEV) {
+        console.log("useAppData: Fetch já executado, pulando...");
+      }
+      return;
     }
+
+    hasFetched.current = true;
+
+    if (import.meta.env.DEV) {
+      console.log("useAppData: Primeira execução");
+    }
+
     fetchAllData();
   }, [fetchAllData]);
 
