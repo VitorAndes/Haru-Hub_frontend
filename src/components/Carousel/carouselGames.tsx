@@ -9,7 +9,7 @@ export function CarouselGames() {
   const { recentGames, isLoading, recentGamesError, refetch } =
     useAppDataContext();
   const { current, previousSlide, nextSlide, goToSlide } = useCarousel(
-    recentGames.length
+    recentGames.length,
   );
 
   if (recentGamesError) {
@@ -27,7 +27,15 @@ export function CarouselGames() {
       </h1>
 
       {isLoading ? (
-        <LoadingState className="lg:w-[1280px]" />
+        <div className="flex w-96 h-[390px] lg:h-[450px] lg:w-[1220px]">
+          <div className="flex flex-col lg:flex-row w-full gap-2">
+            <LoadingState className="max-w-96 lg:flex-1 lg:max-w-[800px] h-full" />
+            <div className="flex flex-1 flex-col gap-4 h-auto lg:h-full max-w-96 lg:max-w-[460px]">
+              <LoadingState className="flex-1 h-32" />
+              <LoadingState className="flex-1 h-48" />
+            </div>
+          </div>
+        </div>
       ) : (
         <>
           <div
@@ -40,7 +48,6 @@ export function CarouselGames() {
               <Carousel key={game.steam_appid} game={game} />
             ))}
           </div>
-
           <CarouselControls
             games={recentGames}
             current={current}

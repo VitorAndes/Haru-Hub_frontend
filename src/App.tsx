@@ -1,8 +1,9 @@
 import { Search } from "lucide-react";
-import { ChangeEvent, useState } from "react";
+import { type ChangeEvent, useState } from "react";
 
 import { CarouselGames } from "./components/Carousel/carouselGames";
 import { Input } from "./components/common/Input";
+import { LoadingState } from "./components/common/loadingState";
 import { Games } from "./components/Games/games";
 import { PlayerProfile } from "./components/user/playerProfile";
 import { ProfileAvatar } from "./components/user/profileAvatar";
@@ -11,8 +12,8 @@ import { getPersonaStateInfo } from "./utils/getPersonaState";
 
 export function App() {
   const [inputValue, setInputValue] = useState("");
-  const { playerProfile } = useAppDataContext();
-  const personaState = getPersonaStateInfo(playerProfile?.personastate!);
+  const { playerProfile, isLoading } = useAppDataContext();
+  const personaState = getPersonaStateInfo(playerProfile?.personastate ?? 0);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -24,15 +25,19 @@ export function App() {
         <PlayerProfile />
       </aside>
       <main className="pb-8 lg:pb-0 max-w-96 lg:max-w-full lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
-        <div
-          className={`lg:hidden absolute top-1 right-2 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
-        >
-          <ProfileAvatar
-            avatarUrl={playerProfile?.avatarfull!}
-            personaname={playerProfile?.personaname!}
-            isOnline={playerProfile?.personastate === 1}
-          />
-        </div>
+        {isLoading ? (
+          <LoadingState className="size-14 absolute top-1 right-2 z-10 lg:hidden" />
+        ) : (
+          <div
+            className={`lg:hidden absolute top-1 right-2 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
+          >
+            <ProfileAvatar
+              avatarUrl={playerProfile?.avatarfull ?? ""}
+              personaname={playerProfile?.personaname ?? ""}
+              isOnline={playerProfile?.personastate === 1}
+            />
+          </div>
+        )}
         <header className="hidden lg:flex items-center gap-2 justify-between relative">
           <h1 className="font-title text-3xl font-bold">
             Bem vindo ao Haru Hub!

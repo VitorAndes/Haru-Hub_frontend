@@ -1,5 +1,5 @@
-import { Calendar, Clock, User } from "lucide-react";
-import { UserProfileType } from "../../api/fetchUser";
+import { Calendar, Clock } from "lucide-react";
+import type { UserProfileType } from "../../api/fetchUser";
 import { formatDate, formatLastSeen } from "../../utils/formatDate";
 
 export function ProfileStats({ profile }: { profile: UserProfileType }) {
@@ -27,16 +27,6 @@ export function ProfileStats({ profile }: { profile: UserProfileType }) {
             </div>
           </div>
         )}
-
-        <div className="flex items-start gap-3">
-          <User className="w-6 h-6 text-secondary mt-0.5 flex-shrink-0" />
-          <div>
-            <span className="font-semibold text-text">Steam ID:</span>
-            <p className="text-text/70 text-xs font-mono break-all">
-              {profile.steamid}
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

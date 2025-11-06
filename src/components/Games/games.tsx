@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GamesType } from "../../api/fetchGames";
+import type { GamesType } from "../../api/fetchGames";
 import { useAppDataContext } from "../../context/AppDataProvider";
 import { useGameFilter } from "../../hooks/useGameFilter";
 import { EmptyState } from "../common/emptyState";
@@ -58,28 +58,31 @@ export function Games({ filterSearch }: CardGameProps) {
     };
   }, []);
 
-  if (isLoading) {
-    return <LoadingState className=" lg:w-[1280px]" />;
-  }
-
   if (gamesError) {
     return <ErrorState error={gamesError} onRetry={refetch} />;
   }
 
-  if (filteredGames.length === 0) {
+  if (!isLoading && filteredGames.length === 0) {
     return <EmptyState hasSearch={Boolean(filterSearch.trim())} />;
   }
 
   return (
     <>
-      <div className="w-full flex flex-col lg:grid lg:grid-cols-3 gap-6 px-7 lg:p-4">
-        {filteredGames.map((game) => (
-          <GamesCard
-            key={game.steam_appid}
-            game={game}
-            onOpenModal={openModal}
-          />
-        ))}
+      <div className="w-full flex flex-col lg:grid lg:grid-cols-3 gap-6">
+        {isLoading
+          ? Array.from({ length: 6 }).map((_, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              <LoadingState key={index} className="lg:w-[400px] h-40 lg:h-60" />
+            ))
+          : filteredGames.map((game) => {
+              return (
+                <GamesCard
+                  key={game.steam_appid}
+                  game={game}
+                  onOpenModal={openModal}
+                />
+              );
+            })}
       </div>
 
       {isModalOpen && selectedGame && (

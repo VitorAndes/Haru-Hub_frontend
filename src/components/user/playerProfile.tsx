@@ -9,12 +9,7 @@ export function PlayerProfile() {
   const { error, isLoading, playerProfile, refetch } = useAppDataContext();
 
   if (isLoading) {
-    return (
-      <LoadingState
-        className="hidden lg:block h-full w-60"
-        loadingTitle={"perfil"}
-      />
-    );
+    return <LoadingState className="hidden lg:block h-full w-56" />;
   }
 
   if (error) {

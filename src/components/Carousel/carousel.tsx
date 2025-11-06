@@ -1,4 +1,4 @@
-import { RecentGamesType } from "../../api/fetchRecentGames";
+import type { RecentGamesType } from "../../api/fetchRecentGames";
 import imgLoading from "../../assets/placeholder-game.webp";
 
 const MAX_SCREENSHOTS = 2;
@@ -43,7 +43,7 @@ export function Carousel({ game }: { game: RecentGamesType }) {
         </div>
       </figure>
 
-      <div className="flex flex-1 flex-col gap-4 h-auto lg:h-full max-w-96 lg:max-w-[460px]">
+      <div className="flex flex-col gap-4 max-w-96 lg:max-w-[460px]">
         <div className="flex-1 p-3 lg:bg-primary/25 lg:backdrop-blur lg:shadow-md lg:shadow-secondary rounded-2xl lg:overflow-hidden">
           <h1 className="font-title text-xl md:text-2xl font-semibold text-accent line-clamp-2">
             {name}
@@ -53,7 +53,7 @@ export function Carousel({ game }: { game: RecentGamesType }) {
           </p>
         </div>
 
-        <figure className="hidden lg:grid grid-cols-1 gap-2 w-full">
+        <figure className="hidden lg:flex">
           {screenshots.slice(1, MAX_SCREENSHOTS).map((screenshot) => (
             <img
               key={screenshot.id}

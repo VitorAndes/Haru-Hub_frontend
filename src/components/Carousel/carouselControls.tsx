@@ -1,5 +1,5 @@
 import { ChevronLeftCircle, ChevronRightCircle } from "lucide-react";
-import { GamesType } from "../../api/fetchGames";
+import type { GamesType } from "../../api/fetchGames";
 
 export function CarouselControls({
   games,
@@ -29,6 +29,7 @@ export function CarouselControls({
       <div className="flex items-center gap-2">
         {games.map((_, i) => (
           <button
+            type="button"
             key={`dot-${i}`}
             onClick={() => onGoTo(i)}
             className={`rounded-full cursor-pointer h-4 transition-all duration-700 hover:opacity-40 ${

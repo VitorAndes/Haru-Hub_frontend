@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GamesType } from "../../api/fetchGames";
+import type { GamesType } from "../../api/fetchGames";
 import placeholderImage from "../../assets/placeholder-game.webp";
 
 export function GamesCard({
@@ -12,6 +12,7 @@ export function GamesCard({
   const [imageError, setImageError] = useState(false);
 
   return (
+    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <figure
       className="max-w-96 lg:w-[400px] lg:h-60 relative group cursor-pointer"
       onClick={() => onOpenModal(game)}

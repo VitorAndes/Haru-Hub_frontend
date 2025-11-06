@@ -1,6 +1,6 @@
 import { XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
-import { GamesType } from "../../api/fetchGames";
+import type { GamesType } from "../../api/fetchGames";
 import placeholderImage from "../../assets/placeholder-game.webp";
 
 type GamesModalProps = GamesType & {
