@@ -18,7 +18,7 @@ export function Carousel({ game }: { game: RecentGamesType }) {
       key={steam_appid}
       className="flex flex-col lg:flex-row w-full flex-shrink-0 gap-2"
     >
-      <figure className="max-w-96 lg:flex-1 lg:max-w-[800px] relative">
+      <figure className="w-96 lg:w-[800px] relative">
         <img
           loading="lazy"
           fetchPriority="high"
