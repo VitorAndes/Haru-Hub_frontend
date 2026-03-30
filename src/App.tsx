@@ -1,10 +1,10 @@
 import { Search } from "lucide-react";
 import { type ChangeEvent, useState } from "react";
 
-import { CarouselGames } from "./components/Carousel/carouselGames";
+import { CarouselGames } from "./components/carousel/carouselGames";
 import { Input } from "./components/common/Input";
 import { LoadingState } from "./components/common/loadingState";
-import { Games } from "./components/Games/games";
+import { Games } from "./components/games/games";
 import { PlayerProfile } from "./components/user/playerProfile";
 import { ProfileAvatar } from "./components/user/profileAvatar";
 import { useAppDataContext } from "./context/AppDataProvider";
@@ -20,16 +20,16 @@ export function App() {
   };
 
   return (
-    <div className="flex lg:p-4 h-full lg:w-[1580px] lg:h-[1000px] lg:gap-4">
-      <aside>
+    <div className="flex min-h-screen flex-col lg:h-screen lg:flex-row">
+      <aside className="h-full lg:h-screen">
         <PlayerProfile />
       </aside>
-      <main className="pb-8 lg:pb-0 max-w-96 lg:max-w-full lg:px-8 lg:overflow-hidden lg:overflow-y-scroll lg:bg-scroll rounded-lg flex flex-col relative ">
+      <main className="relative flex max-w-96 flex-col m-auto rounded-lg pb-8 lg:h-screen lg:min-h-0 lg:max-w-full lg:flex-1 lg:overflow-y-auto overflow-x-hidden lg:px-8 lg:pb-0">
         {isLoading ? (
           <LoadingState className="size-14 absolute top-1 right-2 z-10 lg:hidden" />
         ) : (
           <div
-            className={`lg:hidden absolute top-1 right-2 z-10 shadow-sm rounded-2xl border ${personaState.bgColor}`}
+            className={`lg:hidden absolute top-1 right-1 z-10 rounded-full shadow-sm border ${personaState.bgColor}`}
           >
             <ProfileAvatar
               avatarUrl={playerProfile?.avatarfull ?? ""}
@@ -38,25 +38,20 @@ export function App() {
             />
           </div>
         )}
-        <header className="hidden lg:flex items-center gap-2 justify-between relative">
-          <h1 className="font-title text-3xl font-bold">
-            Bem vindo ao Haru Hub!
-          </h1>
-        </header>
         <section className="m-auto lg:mt-10 ">
           <CarouselGames />
         </section>
-        <section className="flex flex-col lg:gap-7 mt-16">
-          <div className="flex flex-wrap items-baseline justify-between lg:gap-5 px-3 lg:px-0">
-            <h1 className="font-title text-lg lg:text-xl font-semibold mb-5">
+        <section className="flex flex-col lg:gap-7 mt-16 m-auto">
+          <div className="flex flex-wrap items-baseline justify-between lg:gap-5 px-3 lg:px-0 w-full">
+            <h2 className="font-title text-md lg:text-lg font-semibold mb-5">
               Todos os jogos
-            </h1>
+            </h2>
 
             <Input
               id="games-name"
               type="text"
               onChange={handleChange}
-              icon={() => <Search className="lg:size-8" />}
+              icon={() => <Search className="lg:size-6" />}
               placeholder="Procurar jogo..."
             />
           </div>

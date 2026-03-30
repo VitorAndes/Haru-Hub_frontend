@@ -9,10 +9,10 @@ type InputProps = {
 
 export const Input = ({ icon, onClick, errorMessage, ...rest }: InputProps) => {
   return (
-    <div className="hidden lg:flex gap-2 items-center lg:w-96 bg-primary/25 lg:h-14 lg:p-5 p-2 mb-10 rounded-md outline-none backdrop-blur-sm shadow-md shadow-secondary focus-within:bg-secondary/70 transition-all">
+    <div className="hidden lg:flex gap-2 items-center lg:w-80 bg-primary/25 lg:h-10 p-2 rounded-md outline-none backdrop-blur-sm shadow-sm shadow-secondary focus-within:bg-secondary/70 transition-all">
       {icon?.()}
       <input
-        className="font-paragraph text-xs lg:text-base lg:w-96 bg-transparent outline-none"
+        className="font-paragraph text-xs lg:text-base lg:w-80 bg-transparent outline-none"
         {...rest}
       />
       {errorMessage && <p>{errorMessage}</p>}

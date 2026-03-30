@@ -9,7 +9,7 @@ export function PlayerProfile() {
   const { error, isLoading, playerProfile, refetch } = useAppDataContext();
 
   if (isLoading) {
-    return <LoadingState className="hidden lg:block h-full w-56" />;
+    return <LoadingState className="hidden lg:block h-full w-28" />;
   }
 
   if (error) {
@@ -28,7 +28,7 @@ export function PlayerProfile() {
 
   return (
     <div
-      className={`hidden lg:flex flex-col justify-between p-4 gap-6 w-56 h-full rounded-2xl shadow-md border backdrop-blur-sm bg-primary/25 transition-all duration-300 ${personaState.bgColor}`}
+      className={`hidden lg:flex flex-col justify-between p-2 gap-6 w-32 h-full shadow-md  lg:border-l-0 lg:border-t-0 lg:border-b-0 border  backdrop-blur-sm bg-primary/85 transition-all duration-300 ${personaState.bgColor}`}
     >
       <ProfileHeader profile={playerProfile} />
       <ProfileStats profile={playerProfile} />

@@ -6,8 +6,8 @@ export default {
       colors: {
         text: "#ede8f5",
         primary: "#16161A",
-        secondary: "#46158f",
-        accent: "#701dee",
+        secondary: "#801dee",
+        accent: "#901589",
         backgroundPrimary: "#100F0F",
         backgroundSecondary: "#222222",
         aside: "#16161A",

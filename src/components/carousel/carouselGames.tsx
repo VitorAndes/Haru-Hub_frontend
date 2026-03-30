@@ -22,14 +22,10 @@ export function CarouselGames() {
 
   return (
     <div className="flex flex-col lg:items-center gap-4 w-full lg:max-w-[1280px] overflow-hidden">
-      <h1 className="hidden lg:block font-title text-xl font-semibold self-start mb-5">
-        Jogados recentemente
-      </h1>
-
       {isLoading ? (
-        <div className="flex w-96 h-[390px] lg:h-[450px] lg:w-[1220px]">
+        <div className="flex w-96 h-[390px] lg:h-[380px] lg:w-[1040px]">
           <div className="flex flex-col lg:flex-row w-full gap-2">
-            <LoadingState className="max-w-96 lg:flex-1 lg:max-w-[800px] h-full" />
+            <LoadingState className="max-w-96 lg:flex-1 lg:max-w-[1000px] h-full" />
             <div className="flex flex-1 flex-col gap-4 h-auto lg:h-full max-w-96 lg:max-w-[460px]">
               <LoadingState className="flex-1 h-32" />
               <LoadingState className="flex-1 h-48" />
@@ -39,7 +35,7 @@ export function CarouselGames() {
       ) : (
         <>
           <div
-            className="flex transition-all ease-in-out duration-500 max-w-96 lg:max-w-[1280px]"
+            className="flex transition-all ease-in-out duration-700 max-w-96 lg:max-w-[1280px]"
             style={{
               transform: `translateX(-${current * 100}%)`,
             }}

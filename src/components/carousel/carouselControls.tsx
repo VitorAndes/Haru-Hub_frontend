@@ -23,7 +23,7 @@ export function CarouselControls({
         type="button"
         aria-label="Slide anterior"
       >
-        <ChevronLeftCircle size={32} />
+        <ChevronLeftCircle size={20} />
       </button>
 
       <div className="flex items-center gap-2">
@@ -32,7 +32,7 @@ export function CarouselControls({
             type="button"
             key={`dot-${i}`}
             onClick={() => onGoTo(i)}
-            className={`rounded-full cursor-pointer h-4 transition-all duration-700 hover:opacity-40 ${
+            className={`rounded-full cursor-pointer h-4 transition-all duration-300 hover:opacity-40 hover:-translate-y-2 ${
               i === current ? "bg-secondary w-20" : "bg-white w-4"
             }`}
             aria-label={`Ir para slide ${i + 1}`}
@@ -47,7 +47,7 @@ export function CarouselControls({
         type="button"
         aria-label="Próximo slide"
       >
-        <ChevronRightCircle size={32} />
+        <ChevronRightCircle size={20} />
       </button>
     </div>
   );

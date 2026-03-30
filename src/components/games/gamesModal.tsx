@@ -1,5 +1,5 @@
 import { XCircle } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { GamesType } from "../../api/fetchGames";
 import placeholderImage from "../../assets/placeholder-game.webp";
 
@@ -17,22 +17,13 @@ export const GamesModal = ({
 }: GamesModalProps) => {
   const [imageError, setImageError] = useState(false);
 
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
-
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 flex lg:items-center lg:justify-center z-50 lg:p-4"
       onClick={onClose}
     >
       <div
-        className="bg-primary rounded-2xl max-w-[90vw] h-fit lg:max-w-2xl lg:w-full lg:max-h-[90vh] overflow-hidden shadow-2xl border border-secondary/20"
+        className="bg-primary rounded-lg lg:max-w-2xl lg:h-[550px] overflow-y-auto shadow-lg border border-secondary/20 relative"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
@@ -47,7 +38,7 @@ export const GamesModal = ({
 
         <div className="p-6 space-y-6">
           <div className="space-y-3">
-            <h1 className="font-title text-3xl font-semibold text-accent line-clamp-2">
+            <h1 className="font-title text-lg lg:text-2xl font-semibold text-secondary line-clamp-2">
               {name}
             </h1>
 
@@ -56,7 +47,7 @@ export const GamesModal = ({
                 {genres.slice(0, 4).map((genre) => (
                   <span
                     key={genre.id}
-                    className="px-3 py-1 bg-secondary/20 border border-secondary/30 rounded-full text-sm text-text/90"
+                    className="px-3 py-1 bg-secondary/20 border border-secondary/30 rounded-lg text-sm text-text/90"
                   >
                     {genre.description}
                   </span>
@@ -65,36 +56,33 @@ export const GamesModal = ({
             )}
           </div>
 
-          <div className="max-h-24 lg:max-h-32 overflow-y-auto">
-            <p className="font-paragraph text-lg font-light leading-relaxed text-text/90">
+          <div>
+            <p className="font-paragraph lg:text-md font-light leading-relaxed text-text/90">
               {short_description || "Descrição não disponível."}
             </p>
           </div>
 
           {screenshots && screenshots.length > 0 && (
-            <div className="space-y-3">
-              <h3 className="font-semibold text-accent">Screenshots</h3>
-              <div className="grid grid-cols-1 gap-2 max-h-60 overflow-hidden">
-                {screenshots.slice(0, 1).map((screenshot) => (
-                  <img
-                    key={screenshot.id}
-                    src={screenshot.path_thumbnail}
-                    alt="Screenshot do jogo"
-                    className="rounded-lg object-cover w-full h-60 hover:scale-105 transition-transform"
-                  />
-                ))}
-              </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 overflow-hidden">
+              {screenshots.slice(1, 4).map((screenshot) => (
+                <img
+                  key={screenshot.id}
+                  src={screenshot.path_thumbnail}
+                  alt="Screenshot do jogo"
+                  className="rounded-md object-cover h-32 w-full lg:aspect-video hover:scale-105 transition-all duration-300"
+                />
+              ))}
             </div>
           )}
         </div>
 
         <button
-          className="absolute top-12 right-9 lg:top-4 lg:right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+          className="absolute top-1 right-1 p-2 hover:text-rose-500  rounded-full text-secondary transition-colors"
           type="button"
           onClick={onClose}
           aria-label="Fechar modal"
         >
-          <XCircle size={24} />
+          <XCircle size={32} className="bg-backgroundPrimary/80 rounded-full" />
         </button>
       </div>
     </div>

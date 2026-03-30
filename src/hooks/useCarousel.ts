@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 export function useCarousel(totalSlides: number) {
-  const SLIDE_INTERVAL = 5000;
+  const SLIDE_INTERVAL = 7000;
   const [current, setCurrent] = useState(0);
 
   const previousSlide = useCallback(() => {

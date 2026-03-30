@@ -6,5 +6,5 @@ function cn(...inputs: any[]) {
 }
 
 export function LoadingState({ className }: { className?: string }) {
-  return <div className={cn("skeleton-shimmer rounded-xl", className)} />;
+  return <div className={cn("skeleton-shimmer rounded-lg", className)} />;
 }

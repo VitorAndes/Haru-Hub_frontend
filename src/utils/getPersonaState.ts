@@ -2,12 +2,12 @@ const PERSONA_STATES = {
   0: {
     label: "Offline",
     color: "🔴",
-    bgColor: "border-red-500 shadow-red-900",
+    bgColor: " border-red-500 lg:border-r-red-500  shadow-red-900",
   },
   1: {
     label: "Online",
     color: "🟢",
-    bgColor: "border-green-500 shadow-green-900",
+    bgColor: "border-green-500 lg:border-r-green-500 shadow-green-900",
   },
 } as const;
 

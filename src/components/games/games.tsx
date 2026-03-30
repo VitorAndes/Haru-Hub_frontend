@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import type { GamesType } from "../../api/fetchGames";
 import { useAppDataContext } from "../../context/AppDataProvider";
 import { useGameFilter } from "../../hooks/useGameFilter";
@@ -16,47 +16,40 @@ export function Games({ filterSearch }: CardGameProps) {
   const { games, isLoading, gamesError, refetch } = useAppDataContext();
   const filteredGames = useGameFilter(games, filterSearch);
   const [selectedGame, setSelectedGame] = useState<GamesType | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const timeoutRef = useRef(null);
+  const frameRef = useRef<number | null>(null);
+
+  const isModalOpen = selectedGame !== null;
 
   const openModal = useCallback((game: GamesType) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
+    if (frameRef.current !== null) {
+      cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
     }
 
     setSelectedGame(game);
-    setIsModalOpen(true);
+    setIsModalVisible(false);
 
-    requestAnimationFrame(() => {
+    frameRef.current = requestAnimationFrame(() => {
       setIsModalVisible(true);
+      frameRef.current = null;
     });
+
     document.body.style.overflow = "hidden";
   }, []);
 
   const closeModal = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
     setIsModalVisible(false);
+  }, []);
 
-    setTimeout(() => {
-      setIsModalOpen(false);
-      setSelectedGame(null);
-    }, 1000);
+  const handleModalTransitionEnd = useCallback(() => {
+    if (isModalVisible) {
+      return;
+    }
+
+    setSelectedGame(null);
     document.body.style.overflow = "unset";
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = "unset";
-
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
+  }, [isModalVisible]);
 
   if (gamesError) {
     return <ErrorState error={gamesError} onRetry={refetch} />;
@@ -68,11 +61,10 @@ export function Games({ filterSearch }: CardGameProps) {
 
   return (
     <>
-      <div className="w-full flex flex-col lg:grid lg:grid-cols-3 gap-6">
+      <div className="w-full grid lg:grid-cols-3 gap-5">
         {isLoading
           ? Array.from({ length: 6 }).map((_, index) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-              <LoadingState key={index} className="lg:w-[400px] h-40 lg:h-60" />
+              <LoadingState key={index} className="w-[350px] h-40 lg:h-60" />
             ))
           : filteredGames.map((game) => {
               return (
@@ -92,6 +84,7 @@ export function Games({ filterSearch }: CardGameProps) {
           }`}
         >
           <div
+            onTransitionEnd={handleModalTransitionEnd}
             className={`w-full h-full transition-all duration-300 ease-out ${
               isModalVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
             }`}

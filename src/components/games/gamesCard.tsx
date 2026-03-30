@@ -14,10 +14,10 @@ export function GamesCard({
   return (
     // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <figure
-      className="max-w-96 lg:w-[400px] lg:h-60 relative group cursor-pointer"
+      className="max-w-96 lg:h-52 relative group cursor-pointer"
       onClick={() => onOpenModal(game)}
     >
-      <div className="relative w-full h-full overflow-hidden rounded-2xl bg-primary/80">
+      <div className="w-full h-full relative overflow-hidden rounded-lg bg-primary/80">
         <img
           className="w-full h-full transition-all duration-300 group-hover:scale-105"
           src={imageError ? placeholderImage : game.header_image}
@@ -35,7 +35,7 @@ export function GamesCard({
         </div>
       </div>
 
-      <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-secondary transition-colors duration-300" />
+      <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-secondary transition-colors duration-300" />
     </figure>
   );
 }
