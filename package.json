@@ -12,13 +12,13 @@
 	"dependencies": {
 		"clsx": "^2.1.1",
 		"lucide-react": "^0.471.1",
-		"react": "19.0.0",
-		"react-dom": "19.0.0",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
 		"tailwind-merge": "^3.3.1"
 	},
 	"devDependencies": {
-		"@types/react": "19.0.10",
-		"@types/react-dom": "19.0.4",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^4.3.4",
 		"autoprefixer": "^10.4.20",
 		"globals": "^15.14.0",

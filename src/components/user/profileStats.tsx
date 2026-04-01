@@ -1,9 +1,19 @@
 import { Calendar, Clock } from "lucide-react";
 import type { UserProfileType } from "../../api/fetchUser";
-import { formatDate, formatLastSeen } from "../../utils/formatDate";
+import {
+  formatDate,
+  formatLastSeen,
+} from "../../utils/formatDate";
 
-export function ProfileStats({ profile }: { profile: UserProfileType }) {
-  const accountCreated = formatDate(profile.timecreated, "en-US");
+export function ProfileStats({
+  profile,
+}: {
+  profile: UserProfileType;
+}) {
+  const accountCreated = formatDate(
+    profile.timecreated,
+    "en-US",
+  );
   const lastSeen = formatLastSeen(profile.lastlogoff);
 
   return (
@@ -14,8 +24,10 @@ export function ProfileStats({ profile }: { profile: UserProfileType }) {
             Conta criada em:
           </span>
           <div className="flex gap-1 items-center">
-            <Calendar className="size-5 text-secondary " />
-            <p className="text-text/70 text-sm">{accountCreated}</p>
+            <Calendar className="size-4 text-secondary " />
+            <p className="text-text/70 text-sm">
+              {accountCreated}
+            </p>
           </div>
         </div>
         {profile.personastate !== 1 && (
@@ -24,8 +36,10 @@ export function ProfileStats({ profile }: { profile: UserProfileType }) {
               Última vez online:
             </span>
             <div className="flex gap-1 items-center ">
-              <Clock className="size-5 text-secondary" />
-              <p className="text-text/70 text-sm  ">{lastSeen}</p>
+              <Clock className="size-4 text-secondary" />
+              <p className="text-text/70 text-sm  ">
+                {lastSeen}
+              </p>
             </div>
           </div>
         )}

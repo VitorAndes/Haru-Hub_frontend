@@ -9,7 +9,7 @@ export function ProfileAvatar({
 }) {
   return (
     <div className="relative">
-      <figure className="size-12 lg:size-24 rounded-full overflow-hidden lg:border-2 border-secondary/30">
+      <figure className="size-12 rounded-full  lg:size-24 lg:rounded-lg border overflow-hidden border-secondary/20">
         <img
           src={avatarUrl}
           alt={`Avatar de ${personaname}`}
@@ -18,7 +18,7 @@ export function ProfileAvatar({
       </figure>
 
       <div
-        className={`absolute bottom-1 right-1 size-2 lg:w-6 lg:h-6 rounded-full border-2 border-primary flex items-center justify-center text-xs ${
+        className={`absolute -bottom-1 -right-1 size-2 lg:w-6 lg:h-6 rounded-full border border-primary flex items-center justify-center text-xs ${
           isOnline ? "bg-green-500" : "bg-red-500"
         }`}
       >

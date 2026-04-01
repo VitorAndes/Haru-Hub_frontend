@@ -2,6 +2,7 @@ import { XCircle } from "lucide-react";
 import { useState } from "react";
 import type { GamesType } from "../../api/fetchGames";
 import placeholderImage from "../../assets/placeholder-game.webp";
+import { Badge } from "../common/badge";
 
 type GamesModalProps = GamesType & {
   onClose: () => void;
@@ -23,48 +24,45 @@ export const GamesModal = ({
       onClick={onClose}
     >
       <div
-        className="bg-primary rounded-lg lg:max-w-2xl lg:h-[550px] overflow-y-auto shadow-lg border border-secondary/20 relative"
+        className="bg-primary rounded-lg lg:max-w-xl lg:max-h-[620px] overflow-y-auto shadow-lg border border-secondary/20 relative"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
           <img
             className="w-full h-64"
-            src={imageError ? placeholderImage : header_image}
+            src={
+              imageError ? placeholderImage : header_image
+            }
             alt={name || "Imagem do jogo"}
             onError={() => setImageError(true)}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+          {genres && genres.length > 0 && (
+            <div className="flex flex-wrap gap-2 absolute bottom-3 left-6">
+              {genres.map((genre) => (
+                <Badge key={genre.id}>
+                  {genre.description}
+                </Badge>
+              ))}
+            </div>
+          )}
         </div>
 
-        <div className="p-6 space-y-6">
-          <div className="space-y-3">
-            <h1 className="font-title text-lg lg:text-2xl font-semibold text-secondary line-clamp-2">
-              {name}
-            </h1>
-
-            {genres && genres.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {genres.slice(0, 4).map((genre) => (
-                  <span
-                    key={genre.id}
-                    className="px-3 py-1 bg-secondary/20 border border-secondary/30 rounded-lg text-sm text-text/90"
-                  >
-                    {genre.description}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+        <div className="p-6 space-y-5">
+          <h1 className="font-title text-xl font-semibold text-secondary line-clamp-2">
+            {name}
+          </h1>
 
           <div>
-            <p className="font-paragraph lg:text-md font-light leading-relaxed text-text/90">
-              {short_description || "Descrição não disponível."}
+            <p className="font-paragraph text-sm font-light leading-relaxed text-text/80">
+              {short_description ||
+                "Descrição não disponível."}
             </p>
           </div>
 
           {screenshots && screenshots.length > 0 && (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 overflow-hidden">
-              {screenshots.slice(1, 4).map((screenshot) => (
+            <div className="flex gap-3 overflow-x-auto overflow-y-hidden">
+              {screenshots.map((screenshot) => (
                 <img
                   key={screenshot.id}
                   src={screenshot.path_thumbnail}
@@ -77,12 +75,15 @@ export const GamesModal = ({
         </div>
 
         <button
-          className="absolute top-1 right-1 p-2 hover:text-rose-500  rounded-full text-secondary transition-colors"
+          className="absolute top-1 right-1 p-2 hover:text-rose-500 hover:scale-105 active:scale-95 rounded-full text-secondary duration-300 transition-colors"
           type="button"
           onClick={onClose}
           aria-label="Fechar modal"
         >
-          <XCircle size={32} className="bg-backgroundPrimary/80 rounded-full" />
+          <XCircle
+            size={32}
+            className="bg-backgroundPrimary/80 rounded-full"
+          />
         </button>
       </div>
     </div>

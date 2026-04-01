@@ -13,9 +13,13 @@ import { getPersonaStateInfo } from "./utils/getPersonaState";
 export function App() {
   const [inputValue, setInputValue] = useState("");
   const { playerProfile, isLoading } = useAppDataContext();
-  const personaState = getPersonaStateInfo(playerProfile?.personastate ?? 0);
+  const personaState = getPersonaStateInfo(
+    playerProfile?.personastate ?? 0,
+  );
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement>,
+  ) => {
     setInputValue(e.target.value);
   };
 
@@ -24,7 +28,7 @@ export function App() {
       <aside className="h-full lg:h-screen">
         <PlayerProfile />
       </aside>
-      <main className="relative flex max-w-96 flex-col m-auto rounded-lg pb-8 lg:h-screen lg:min-h-0 lg:max-w-full lg:flex-1 lg:overflow-y-auto overflow-x-hidden lg:px-8 lg:pb-0">
+      <main className="relative flex max-w-96 flex-col m-auto rounded-lg pb-8 lg:h-screen lg:min-h-0 lg:max-w-7xl lg:flex-1 lg:overflow-y-auto overflow-x-hidden lg:px-8 lg:pb-0">
         {isLoading ? (
           <LoadingState className="size-14 absolute top-1 right-2 z-10 lg:hidden" />
         ) : (
@@ -38,11 +42,11 @@ export function App() {
             />
           </div>
         )}
-        <section className="m-auto lg:mt-10 ">
+        <section className="lg:mt-10 ">
           <CarouselGames />
         </section>
-        <section className="flex flex-col lg:gap-7 mt-16 m-auto">
-          <div className="flex flex-wrap items-baseline justify-between lg:gap-5 px-3 lg:px-0 w-full">
+        <section className="flex flex-col lg:gap-7 mt-16">
+          <div className="flex flex-wrap justify-between lg:gap-5">
             <h2 className="font-title text-md lg:text-lg font-semibold mb-5">
               Todos os jogos
             </h2>
@@ -51,7 +55,6 @@ export function App() {
               id="games-name"
               type="text"
               onChange={handleChange}
-              icon={() => <Search className="lg:size-6" />}
               placeholder="Procurar jogo..."
             />
           </div>

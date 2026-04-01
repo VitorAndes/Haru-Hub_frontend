@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import type { GamesType } from "../../api/fetchGames";
 import { useAppDataContext } from "../../context/AppDataProvider";
 import { useGameFilter } from "../../hooks/useGameFilter";
@@ -13,50 +13,38 @@ interface CardGameProps {
 }
 
 export function Games({ filterSearch }: CardGameProps) {
-  const { games, isLoading, gamesError, refetch } = useAppDataContext();
+  const { games, isLoading, gamesError, refetch } =
+    useAppDataContext();
   const filteredGames = useGameFilter(games, filterSearch);
-  const [selectedGame, setSelectedGame] = useState<GamesType | null>(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const frameRef = useRef<number | null>(null);
-
-  const isModalOpen = selectedGame !== null;
+  const [selectedGame, setSelectedGame] =
+    useState<GamesType | null>(null);
+  const [isModalVisible, setIsModalVisible] =
+    useState(false);
 
   const openModal = useCallback((game: GamesType) => {
-    if (frameRef.current !== null) {
-      cancelAnimationFrame(frameRef.current);
-      frameRef.current = null;
-    }
-
     setSelectedGame(game);
-    setIsModalVisible(false);
-
-    frameRef.current = requestAnimationFrame(() => {
-      setIsModalVisible(true);
-      frameRef.current = null;
-    });
-
-    document.body.style.overflow = "hidden";
+    setIsModalVisible(true);
   }, []);
 
   const closeModal = useCallback(() => {
     setIsModalVisible(false);
+    setTimeout(() => {
+      setSelectedGame(null);
+    }, 300);
   }, []);
 
-  const handleModalTransitionEnd = useCallback(() => {
-    if (isModalVisible) {
-      return;
-    }
-
-    setSelectedGame(null);
-    document.body.style.overflow = "unset";
-  }, [isModalVisible]);
-
   if (gamesError) {
-    return <ErrorState error={gamesError} onRetry={refetch} />;
+    return (
+      <ErrorState error={gamesError} onRetry={refetch} />
+    );
   }
 
   if (!isLoading && filteredGames.length === 0) {
-    return <EmptyState hasSearch={Boolean(filterSearch.trim())} />;
+    return (
+      <EmptyState
+        hasSearch={Boolean(filterSearch.trim())}
+      />
+    );
   }
 
   return (
@@ -64,7 +52,10 @@ export function Games({ filterSearch }: CardGameProps) {
       <div className="w-full grid lg:grid-cols-3 gap-5">
         {isLoading
           ? Array.from({ length: 6 }).map((_, index) => (
-              <LoadingState key={index} className="w-[350px] h-40 lg:h-60" />
+              <LoadingState
+                key={index}
+                className="w-[350px] h-40 lg:h-60"
+              />
             ))
           : filteredGames.map((game) => {
               return (
@@ -77,22 +68,33 @@ export function Games({ filterSearch }: CardGameProps) {
             })}
       </div>
 
-      {isModalOpen && selectedGame && (
+      <div
+        className={`
+          fixed inset-0 z-40 flex items-center justify-center
+          bg-black/50 backdrop-blur-sm
+          transition-opacity duration-200
+          ${isModalVisible && selectedGame ? "opacity-100" : "opacity-0 pointer-events-none"}
+        `}
+      >
         <div
-          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-100 ${
-            isModalVisible ? "opacity-100" : "opacity-0"
-          }`}
+          className={`
+            w-full h-full flex items-center justify-center
+            transition-all duration-300 ease-out
+            ${
+              isModalVisible && selectedGame
+                ? "opacity-100 scale-100 translate-y-0"
+                : "opacity-0 scale-95 translate-y-4"
+            }
+          `}
         >
-          <div
-            onTransitionEnd={handleModalTransitionEnd}
-            className={`w-full h-full transition-all duration-300 ease-out ${
-              isModalVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
-            }`}
-          >
-            <GamesModal {...selectedGame} onClose={closeModal} />
-          </div>
+          {selectedGame && (
+            <GamesModal
+              {...selectedGame}
+              onClose={closeModal}
+            />
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 }
