@@ -1,4 +1,3 @@
-import { Search } from "lucide-react";
 import { type ChangeEvent, useState } from "react";
 
 import { CarouselGames } from "./components/carousel/carouselGames";
