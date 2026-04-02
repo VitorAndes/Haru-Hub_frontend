@@ -27,7 +27,7 @@ export function App() {
       <aside className="h-full lg:h-screen">
         <PlayerProfile />
       </aside>
-      <main className="relative flex max-w-96 flex-col m-auto rounded-lg pb-8 lg:h-screen lg:min-h-0 lg:max-w-7xl lg:flex-1 lg:overflow-y-auto overflow-x-hidden lg:px-8 lg:pb-0">
+      <main className="relative flex w-96 flex-col m-auto rounded-lg pb-8 lg:h-screen lg:min-h-0 lg:max-w-7xl lg:flex-1 lg:overflow-y-auto overflow-x-hidden lg:px-8 lg:pb-0">
         {isLoading ? (
           <LoadingState className="size-14 absolute top-1 right-2 z-10 lg:hidden" />
         ) : (

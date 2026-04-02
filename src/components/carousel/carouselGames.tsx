@@ -29,7 +29,7 @@ export function CarouselGames() {
   return (
     <div className="flex flex-col lg:items-center gap-4 w-full lg:max-w-[1280px] overflow-hidden">
       {isLoading ? (
-        <div className="flex w-96 h-[390px] lg:h-[380px] lg:w-[1040px]">
+        <div className="flex h-[390px] lg:h-[380px] w-full">
           <div className="flex flex-col lg:flex-row w-full gap-2">
             <LoadingState className="max-w-96 lg:flex-1 lg:max-w-[1000px] h-full" />
             <div className="flex flex-1 flex-col gap-4 h-auto lg:h-full max-w-96 lg:max-w-[460px]">

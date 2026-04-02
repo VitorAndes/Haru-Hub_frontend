@@ -18,7 +18,7 @@ export function ProfileAvatar({
       </figure>
 
       <div
-        className={`absolute -bottom-1 -right-1 size-2 lg:w-6 lg:h-6 rounded-full border border-primary flex items-center justify-center text-xs ${
+        className={`absolute bottom-1 right-1 size-2 lg:w-6 lg:h-6 rounded-full border border-primary flex items-center justify-center text-xs ${
           isOnline ? "bg-green-500" : "bg-red-500"
         }`}
       >

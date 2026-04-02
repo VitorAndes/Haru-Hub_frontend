@@ -54,7 +54,7 @@ export function Games({ filterSearch }: CardGameProps) {
           ? Array.from({ length: 6 }).map((_, index) => (
               <LoadingState
                 key={index}
-                className="w-[350px] h-40 lg:h-60"
+                className="w-full h-40 lg:h-60"
               />
             ))
           : filteredGames.map((game) => {

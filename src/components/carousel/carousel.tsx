@@ -36,7 +36,7 @@ export function Carousel({ game }: CarouselProps) {
         <img
           loading="lazy"
           fetchPriority="high"
-          className="rounded-b-2xl lg:rounded-lg shadow shadow-secondary bg-primary/80 w-full h-full "
+          className=" rounded-b-2xl lg:rounded-lg shadow shadow-secondary bg-primary/80 w-full h-full "
           src={header_image || imgLoading}
           alt={`Imagem de ${name}`}
           onError={setFallbackImage}
